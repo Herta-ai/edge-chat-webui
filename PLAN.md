@@ -67,6 +67,8 @@
 - [ ] 实现模型下载进度条管理与断点续传逻辑。
 - [ ] 增加 PWA (Progressive Web App) 支持，允许离线安装和使用。
 - [ ] 完善前端错误捕获与用户友好的提示（如内存溢出、WebGPU 不支持等）。
+- [ ] 探索 GraphRAG 技术实现知识图谱
+- [ ] 探索类似 `Project AIRI` 的数字人技术，结果展示更加生动。
 
 ---
 
@@ -81,7 +83,7 @@ src/
 │   ├── tts/         # 语音合成处理模块 (Qwen3TTS 等模型驱动)
 │   ├── flow/        # 节点执行引擎
 │   └── agent/       # MCP Client 与 Skills 实现
-├── database/        # IndexedDB 封装 (Dexie)
+├── database/        # IndexedDB 封装 (@surrealdb/wasm)
 ├── layouts/         # 页面布局
 ├── router/          # 路由配置
 ├── store/           # Pinia 状态管理

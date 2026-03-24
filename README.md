@@ -25,29 +25,31 @@
 
 - 🧠 **100% 浏览器运行**: 基于 `Transformers.js`，借助 Web Worker 异步计算与 WebGPU 硬件加速，流畅运行十亿甚至百亿参数级量化模型。
 - 💬 **全功能对话 UI**: 基于 Naive UI 打造的极客风界面。支持多会话管理、历史记录持久化、Markdown 渲染、代码高亮。
+- 🎙️ **本地语音转文字 (STT)**: 提供本地离线语音转文字功能，释放双手！
 - 🎙️ **本地语音合成 (TTS)**: 内置多模态支持，可加载如 `Qwen3TTS` 等先进的声音生成模型，赋予你的 AI 智能体自然流畅的真实音色，纯离线播报。
 - 🎭 **灵活的提示词管理**: 内置系统提示词（System Prompt）配置面板，随时保存并切换不同的人设预设。
 - 🧩 **可视化 Flow 编排**: 零代码拖拉拽编排你的专属业务流。内置大模型节点、逻辑判断、输入输出等多种组件。
 - 🛠 **Agent & MCP 支持**: 让模型长出手脚！支持纯浏览器端 Skills 注册，并适配 MCP 协议接入外部能力（如本地文件读取、数据库查询）。
-- 📦 **纯本地数据持久化**: 所有的对话历史、模型配置、节点排版数据，均通过 `IndexedDB` 安全地存储在你的浏览器本地，数据永远属于你。
+- 📦 **纯本地数据持久化**: 所有的对话历史、模型配置、节点排版数据，均通过 `@surrealdb/wasm` + `IndexedDB` 安全地存储在你的浏览器本地，数据永远属于你。
+- 📦 **本地文档RAG**: 通过GraphRAG技术将文档处理成知识图谱，并提供RAG功能。
 
 ## 📸 界面预览
 
 _(项目开发中，截图占位区)_
 
-|                                     聊天界面 (Chat View)                                      |                                   节点编排 (Flow Orchestration)                                   |
-| :-------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
-| <img src="https://via.placeholder.com/600x400/18181C/FFFFFF?text=Chat+Interface" width="400"> | <img src="https://via.placeholder.com/600x400/18181C/FFFFFF?text=Drag-and-Drop+Flow" width="400"> |
+|                                           聊天界面 (Chat View)                                           |                                        节点编排 (Flow Orchestration)                                         |
+| :------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------: |
+| <img src="https://via.placeholder.com/600x400/18181C/FFFFFF?text=Chat+Interface" width="400" alt="chat"> | <img src="https://via.placeholder.com/600x400/18181C/FFFFFF?text=Drag-and-Drop+Flow" width="400" alt="flow"> |
 
 ## 🏗 技术架构
 
 - **前端框架**: Vite + Vue 3 (Composition API) + TypeScript
 - **状态管理**: Pinia
 - **组件库**: Naive UI + UnoCSS
-- **AI 底层**: Hugging Face Transformers.js (支持 LLM & TTS 模型)
+- **AI 底层**: Hugging Face Transformers.js (支持 LLM & STT & TTS 模型)
 - **多媒体处理**: Web Audio API
 - **可视化节点**: Vue Flow
-- **本地数据库**: IndexedDB (基于 Dexie.js 驱动)
+- **本地数据库**: IndexedDB (基于 @surrealdb/wasm 驱动)
 
 ## 🚀 快速开始
 

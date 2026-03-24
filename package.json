@@ -1,0 +1,62 @@
+{
+  "name": "EdgeChatWebUI",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck",
+    "lint": "eslint --fix .",
+    "prepare": "simple-git-hooks"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.0.0-next.8",
+    "@surrealdb/wasm": "^3.0.3",
+    "@vueuse/core": "^14.2.1",
+    "alova": "^3.5.1",
+    "colord": "^2.9.3",
+    "crypto-js": "^4.2.0",
+    "defu": "^6.1.4",
+    "naive-ui": "^2.44.1",
+    "nanoid": "^5.1.7",
+    "nprogress": "^0.2.0",
+    "pinia": "^3.0.4",
+    "pinia-plugin-persistedstate": "^4.7.1",
+    "vue": "^3.6.0-beta.8",
+    "vue-i18n": "^11.3.0",
+    "vue-router": "^5.0.4",
+    "xsai-transformers": "^0.0.11"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^7.7.3",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@iconify/utils": "^3.1.0",
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^25.5.0",
+    "@types/nprogress": "^0.2.3",
+    "@unocss/eslint-plugin": "^66.6.7",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "@vitejs/plugin-vue-jsx": "^5.1.5",
+    "@vue/tsconfig": "^0.9.1",
+    "dayjs": "^1.11.20",
+    "eslint": "^10.1.0",
+    "eslint-plugin-format": "^2.0.1",
+    "eslint-plugin-import-x": "^4.16.2",
+    "sass-embedded": "^1.98.0",
+    "simple-git-hooks": "^2.13.1",
+    "typescript": "<6.0.0",
+    "unocss": "^66.6.7",
+    "unplugin-icons": "^23.0.1",
+    "unplugin-vue-components": "^32.0.0",
+    "vite": "^8.0.2",
+    "vite-plugin-vue-devtools": "^8.1.1",
+    "vue-tsc": "^3.2.6"
+  },
+  "simple-git-hooks": {
+    "commit-msg": "bunx --no-install commitlint --edit \"$1\"",
+    "pre-commit": "bun typecheck && bun lint && git diff --exit-code"
+  }
+}
