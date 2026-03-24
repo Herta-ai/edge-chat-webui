@@ -23,8 +23,9 @@
 
 ## ✨ 核心特性
 
-- 🧠 **100% 浏览器运行**: 基于 `Transformers.js`，借助 Web Worker 异步计算与 WebGPU 硬件加速，流畅运行千亿参数级量化模型。
+- 🧠 **100% 浏览器运行**: 基于 `Transformers.js`，借助 Web Worker 异步计算与 WebGPU 硬件加速，流畅运行十亿甚至百亿参数级量化模型。
 - 💬 **全功能对话 UI**: 基于 Naive UI 打造的极客风界面。支持多会话管理、历史记录持久化、Markdown 渲染、代码高亮。
+- 🎙️ **本地语音合成 (TTS)**: 内置多模态支持，可加载如 `Qwen3TTS` 等先进的声音生成模型，赋予你的 AI 智能体自然流畅的真实音色，纯离线播报。
 - 🎭 **灵活的提示词管理**: 内置系统提示词（System Prompt）配置面板，随时保存并切换不同的人设预设。
 - 🧩 **可视化 Flow 编排**: 零代码拖拉拽编排你的专属业务流。内置大模型节点、逻辑判断、输入输出等多种组件。
 - 🛠 **Agent & MCP 支持**: 让模型长出手脚！支持纯浏览器端 Skills 注册，并适配 MCP 协议接入外部能力（如本地文件读取、数据库查询）。
@@ -42,8 +43,9 @@ _(项目开发中，截图占位区)_
 
 - **前端框架**: Vite + Vue 3 (Composition API) + TypeScript
 - **状态管理**: Pinia
-- **组件库**: Naive UI + TailwindCSS (可选)
-- **AI 底层**: Hugging Face Transformers.js
+- **组件库**: Naive UI + UnoCSS
+- **AI 底层**: Hugging Face Transformers.js (支持 LLM & TTS 模型)
+- **多媒体处理**: Web Audio API
 - **可视化节点**: Vue Flow
 - **本地数据库**: IndexedDB (基于 Dexie.js 驱动)
 
@@ -51,8 +53,8 @@ _(项目开发中，截图占位区)_
 
 ### 环境要求
 
-- Node.js >= 18.x
-- pnpm >= 8.x
+- Node.js >= 22.x
+- pnpm >= 10.x
 - 支持 WebGPU 的现代浏览器 (推荐最新版 Chrome / Edge)
 
 ### 安装与运行
@@ -79,6 +81,7 @@ _(项目开发中，截图占位区)_
    _应用将在 `http://localhost:5173` 启动。初次对话时会从 HuggingFace Hub 自动下载并缓存模型文件至本地 IndexedDB。_
 
 4. **生产构建**
+
    ```bash
    pnpm build
    ```
@@ -88,9 +91,11 @@ _(项目开发中，截图占位区)_
 我们有着宏大的计划！详细的开发阶段目标请查看 [PLAN.md](./PLAN.md)。
 
 - [ ] 核心对话 UI 与 IndexedDB 持久化
-- [ ] Transformers.js 集成与 Web Worker 隔离
-- [ ] Vue Flow 节点画布集成
-- [ ] Agent 模块 (Tool Calling / 基础 Skills 支持) -[ ] MCP 协议 (基于 SSE) 浏览器适配
+- [ ] Transformers.js 集成与 Web Worker 隔离 (涵盖 LLM 推理计算)
+- [ ] 集成纯本地的文本转语音 (TTS) 模块，支持 Qwen3TTS 等先进语音模型
+- [ ] Vue Flow 节点画布集成与 TTS 工具节点封装
+- [ ] Agent 模块 (Tool Calling / 基础 Skills 支持)
+- [ ] MCP 协议浏览器适配
 - [ ] PWA 离线支持
 
 ## 🤝 参与贡献

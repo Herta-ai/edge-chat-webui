@@ -14,7 +14,7 @@
 - **本地存储**: IndexedDB (推荐使用 Dexie.js 或 localforage)
 - **AI 推理引擎**: Transformers.js (配合 WebGPU & Web Worker)
 - **图表与节点编排**: Vue Flow (适用于拖拉拽 Flow 节点)
-- **协议支持**: MCP (Model Context Protocol - 浏览器端基于 SSE/WebSocket 适配)
+- **协议支持**: MCP (基于 SSE/WebSocket 适配，或者使用支持跨域请求的Streamable HTTP)
 
 ---
 
@@ -35,8 +35,9 @@
 ### 阶段二：核心推理引擎与对话管理 (Phase 2)
 
 - [ ] 引入 `transformers.js`，在 Web Worker 中初始化推理引擎，避免阻塞 UI 线程。
-- [ ] 实现模型管理模块：支持从 HuggingFace 动态拉取模型（如 Qwen1.5-0.5B、Phi-3-mini 等适配浏览器的量化模型），并在 IndexedDB 中管理缓存。
+- [ ] 实现模型管理模块
 - [ ] 开发基础 Chat UI（支持流式输出、Markdown 渲染、代码高亮）。
+- [ ] 集成 TTS (Text-to-Speech) 模块：支持加载如 `Qwen3TTS`、`SpeechT5` 等纯本地语音模型，实现对话内容的自动语音播报与音频播放控制。
 - [ ] 实现会话功能：支持新建、删除、历史记录加载。
 - [ ] 实现系统提示词 (System Prompt) 动态配置与切换。
 
@@ -46,8 +47,8 @@
 - [ ] 设计并实现基础节点组件：
   - **触发器节点** (Input, Chat, API)
   - **处理节点** (LLM, Prompt 组装, 条件分支)
-  - **工具节点** (Web Search, JS Code, 技能调用)
-  - **输出节点** (Output, Reply)
+  - **工具节点** (Web Search, JS Code, TTS 语音合成, 技能调用)
+  - **输出节点** (Output, Reply, Audio Play)
 - [ ] 实现图连线逻辑 (Edges) 与节点间的数据传递协议。
 - [ ] 开发基于图遍历的 Flow 执行引擎。
 - [ ] 实现 Flow 的保存、加载与本地测试。
@@ -75,8 +76,9 @@
 src/
 ├── assets/          # 静态资源
 ├── components/      # 公共 UI 组件
-├── core/            # 核心业务逻辑
+├── libs/            # 核心业务逻辑
 │   ├── llm/         # transformers.js 封装与 Web Worker 通信
+│   ├── tts/         # 语音合成处理模块 (Qwen3TTS 等模型驱动)
 │   ├── flow/        # 节点执行引擎
 │   └── agent/       # MCP Client 与 Skills 实现
 ├── database/        # IndexedDB 封装 (Dexie)
