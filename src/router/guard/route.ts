@@ -1,6 +1,6 @@
-import type {
-  Router,
-} from 'vue-router'
+import { useAppStore } from '@/store/modules/app'
+import { useRouteStore } from '@/store/modules/route'
+import type { Router } from 'vue-router'
 
 /**
  * create route guard
@@ -8,11 +8,19 @@ import type {
  * @param router router instance
  */
 export function createRouteGuard(router: Router) {
-  router.beforeEach(async (_to, _from, next) => {
-    // const initRoute: Route.RouteKey = 'init'
+  router.beforeEach(async (to, from) => {
+    const appStore = useAppStore()
 
-    // @todo：如果未初始化，先跳转/init
+    if (to.name === 'wizard') {
+      return true
+    }
 
-    next()
+    if (!appStore.isInit) {
+      // 直接 return 路由对象即可实现跳转
+      return { name: 'wizard' }
+    }
+
+    // 4. 其他情况，放行 (返回 true 或不写 return)
+    return true
   })
 }

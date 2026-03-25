@@ -1,10 +1,37 @@
 import { defu } from 'defu'
-import { addColorAlpha, getColorPalette, getPaletteColorByNumber, getRgb } from '@/utils/color'
-import { DARK_CLASS } from '@/const'
+import { addColorAlpha, getColorPalette, getPaletteColorByNumber, getRgb } from '@sa/color'
+import { DARK_CLASS } from '@/constants/app'
 import { toggleHtmlClass } from '@/utils/common'
-import { themeSettings } from '@/theme/settings'
+import { localStg } from '@/utils/storage'
+import { overrideThemeSettings, themeSettings } from '@/theme/settings'
 import { themeVars } from '@/theme/vars'
 import type { GlobalThemeOverrides } from 'naive-ui'
+
+/** Init theme settings */
+export function initThemeSettings() {
+  const isProd = import.meta.env.PROD
+
+  // if it is development mode, the theme settings will not be cached, by update `themeSettings` in `src/theme/settings.ts` to update theme settings
+  if (!isProd)
+    return themeSettings
+
+  // if it is production mode, the theme settings will be cached in localStorage
+  // if want to update theme settings when publish new version, please update `overrideThemeSettings` in `src/theme/settings.ts`
+
+  const localSettings = localStg.get('themeSettings')
+
+  let settings = defu(localSettings, themeSettings)
+
+  const isOverride = localStg.get('overrideThemeFlag') === BUILD_TIME
+
+  if (!isOverride) {
+    settings = defu(overrideThemeSettings, settings)
+
+    localStg.set('overrideThemeFlag', BUILD_TIME)
+  }
+
+  return settings
+}
 
 /**
  * create theme token css vars value by theme settings
@@ -22,7 +49,7 @@ export function createThemeToken(
 
   const { light, dark } = tokens || themeSettings.tokens
 
-  const themeTokens: App.Theme.BaseToken = {
+  const themeTokens: App.Theme.ThemeTokenCSSVars = {
     colors: {
       ...paletteColors,
       nprogress: paletteColors.primary,
@@ -33,7 +60,7 @@ export function createThemeToken(
     },
   }
 
-  const darkThemeTokens: App.Theme.BaseToken = {
+  const darkThemeTokens: App.Theme.ThemeTokenCSSVars = {
     colors: {
       ...themeTokens.colors,
       ...dark?.colors,
@@ -91,12 +118,12 @@ function getCssVarByTokens(tokens: App.Theme.BaseToken) {
 
   for (const [key, tokenValues] of Object.entries(themeVars)) {
     for (const [tokenKey, tokenValue] of Object.entries(tokenValues)) {
-      let cssVarsKey = removeVarPrefix(tokenValue as string)
-      let cssValue = tokens[key]![tokenKey]
+      let cssVarsKey = removeVarPrefix(tokenValue)
+      let cssValue = tokens[key][tokenKey]
 
       if (key === 'colors') {
         cssVarsKey = removeRgbPrefix(cssVarsKey)
-        const { r, g, b } = getRgb(cssValue!)
+        const { r, g, b } = getRgb(cssValue)
         cssValue = `${r} ${g} ${b}`
       }
 
@@ -104,14 +131,15 @@ function getCssVarByTokens(tokens: App.Theme.BaseToken) {
     }
   }
 
-  return styles.join(';')
+  const styleStr = styles.join(';')
+
+  return styleStr
 }
 
 /**
  * Add theme vars to global
  *
  * @param tokens
- * @param darkTokens Dark theme base tokens
  */
 export function addThemeVarsToGlobal(tokens: App.Theme.BaseToken, darkTokens: App.Theme.BaseToken) {
   const cssVarStr = getCssVarByTokens(tokens)
@@ -160,11 +188,11 @@ export function toggleCssDarkMode(darkMode = false) {
  * Toggle auxiliary color modes
  *
  * @param grayscaleMode
- * @param colorWeakness
+ * @param colourWeakness
  */
-export function toggleAuxiliaryColorModes(grayscaleMode = false, colorWeakness = false) {
+export function toggleAuxiliaryColorModes(grayscaleMode = false, colourWeakness = false) {
   const htmlElement = document.documentElement
-  htmlElement.style.filter = [grayscaleMode ? 'grayscale(100%)' : '', colorWeakness ? 'invert(80%)' : '']
+  htmlElement.style.filter = [grayscaleMode ? 'grayscale(100%)' : '', colourWeakness ? 'invert(80%)' : '']
     .filter(Boolean)
     .join(' ')
 }

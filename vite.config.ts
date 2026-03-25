@@ -1,31 +1,16 @@
 import process from 'node:process'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import unocss from 'unocss/vite'
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
-import timezone from 'dayjs/plugin/timezone'
-import vueDevTools from 'vite-plugin-vue-devtools'
-import icons from 'unplugin-icons/vite'
-import iconsResolver from 'unplugin-icons/resolver'
-import components from 'unplugin-vue-components/vite'
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
-import { FileSystemIconLoader } from 'unplugin-icons/loaders'
-import { VitePWA } from 'vite-plugin-pwa'
-import { setupHtmlPlugin } from './build/html'
-import { ICONS_ASSETS } from './src/const'
+import { setupVitePlugins } from './build/plugins'
+import { createViteProxy, getBuildTime } from './build/config'
 
-dayjs.extend(utc)
-dayjs.extend(timezone)
-
-const buildTime = dayjs.tz(Date.now(), 'Asia/Shanghai').format('YYYY-MM-DD HH:mm:ss')
-const svgReplaceReg = /^<svg\s/
-
-// https://vite.dev/config/
 export default defineConfig((configEnv) => {
   const viteEnv = loadEnv(configEnv.mode, process.cwd()) as unknown as Env.ImportMeta
+
+  const buildTime = getBuildTime()
+
+  const enableProxy = configEnv.command === 'serve' && !configEnv.isPreview
+
   return {
     base: viteEnv.VITE_BASE_URL,
     resolve: {
@@ -42,34 +27,25 @@ export default defineConfig((configEnv) => {
         },
       },
     },
-    plugins: [
-      vue(),
-      vueJsx(),
-      unocss(),
-      icons({
-        customCollections: {
-          local: FileSystemIconLoader(ICONS_ASSETS, svg =>
-            svg.replace(svgReplaceReg, '<svg width="1em" height="1em" ')),
-        },
-      }),
-      components({
-        dts: './src/types/components.d.ts',
-        resolvers: [
-          NaiveUiResolver(),
-          iconsResolver({
-            prefix: 'i',
-            customCollections: ['local'],
-          }),
-        ],
-      }),
-      vueDevTools({
-        launchEditor: viteEnv.VITE_DEVTOOLS_LAUNCH_EDITOR || 'webstorm',
-      }),
-      setupHtmlPlugin(buildTime),
-      VitePWA(),
-    ],
+    plugins: setupVitePlugins(viteEnv, buildTime),
     define: {
       BUILD_TIME: JSON.stringify(buildTime),
+    },
+    server: {
+      host: '0.0.0.0',
+      port: 9527,
+      open: true,
+      proxy: createViteProxy(viteEnv, enableProxy),
+    },
+    preview: {
+      port: 9725,
+    },
+    build: {
+      reportCompressedSize: false,
+      sourcemap: viteEnv.VITE_SOURCE_MAP === 'Y',
+      commonjsOptions: {
+        ignoreTryCatch: false,
+      },
     },
   }
 })

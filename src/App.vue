@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { darkTheme, NConfigProvider } from 'naive-ui'
-import { useStore } from '@/hooks'
+import { useAppStore } from './store/modules/app'
+import { useThemeStore } from './store/modules/theme'
 import { naiveDateLocales, naiveLocales } from './locales/naive'
 import type { WatermarkProps } from 'naive-ui'
 
@@ -9,22 +10,22 @@ defineOptions({
   name: 'App',
 })
 
-const { locale } = useStore('app')
-const { darkMode, watermarkContent, naiveTheme, watermark } = useStore('theme')
+const appStore = useAppStore()
+const themeStore = useThemeStore()
 
-const naiveDarkTheme = computed(() => (darkMode.value ? darkTheme : undefined))
+const naiveDarkTheme = computed(() => (themeStore.darkMode ? darkTheme : undefined))
 
 const naiveLocale = computed(() => {
-  return naiveLocales[locale.value]
+  return naiveLocales[appStore.locale]
 })
 
 const naiveDateLocale = computed(() => {
-  return naiveDateLocales[locale.value]
+  return naiveDateLocales[appStore.locale]
 })
 
 const watermarkProps = computed<WatermarkProps>(() => {
   return {
-    content: watermarkContent.value,
+    content: themeStore.watermarkContent,
     cross: true,
     fullscreen: true,
     fontSize: 16,
@@ -42,17 +43,16 @@ const watermarkProps = computed<WatermarkProps>(() => {
 <template>
   <NConfigProvider
     :theme="naiveDarkTheme"
-    :theme-overrides="naiveTheme"
+    :theme-overrides="themeStore.naiveTheme"
     :locale="naiveLocale"
     :date-locale="naiveDateLocale"
     class="h-full"
   >
     <AppProvider>
       <RouterView class="bg-layout" />
-      <NWatermark v-if="watermark.visible" v-bind="watermarkProps" />
+      <NWatermark v-if="themeStore.watermark.visible" v-bind="watermarkProps" />
     </AppProvider>
   </NConfigProvider>
 </template>
 
-<style>
-</style>
+<style scoped></style>

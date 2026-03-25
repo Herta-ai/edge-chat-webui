@@ -55,8 +55,7 @@ _(项目开发中，截图占位区)_
 
 ### 环境要求
 
-- Node.js >= 22.x
-- pnpm >= 10.x
+- Bun >= 1.3.7
 - 支持 WebGPU 的现代浏览器 (推荐最新版 Chrome / Edge)
 
 ### 安装与运行
@@ -64,20 +63,20 @@ _(项目开发中，截图占位区)_
 1. **克隆项目**
 
    ```bash
-   git clone https://github.com/Herta-ai/edge-chat-webui.git
-   cd edge-chat-webui
+   git clone https://github.com/yourusername/edgeflow-llm.git
+   cd edgeflow-llm
    ```
 
 2. **安装依赖**
 
    ```bash
-   pnpm install
+   bun install
    ```
 
 3. **本地开发**
 
    ```bash
-   pnpm dev
+   bun dev
    ```
 
    _应用将在 `http://localhost:5173` 启动。初次对话时会从 HuggingFace Hub 自动下载并缓存模型文件至本地 IndexedDB。_
@@ -85,7 +84,7 @@ _(项目开发中，截图占位区)_
 4. **生产构建**
 
    ```bash
-   pnpm build
+   bun build
    ```
 
 ## 🗺 路线图 (Roadmap)
@@ -109,6 +108,17 @@ _(项目开发中，截图占位区)_
 3. 提交你的代码 (`git commit -m 'Add some AmazingFeature'`)
 4. 推送至分支 (`git push origin feature/AmazingFeature`)
 5. 发起 Pull Request
+
+## 📚 参考项目
+
+本项目在开发过程中借鉴了以下优秀开源项目的理念与代码实现：
+
+|         项目名称         |                       描述                       |                          链接                           |
+| :----------------------: | :----------------------------------------------: | :-----------------------------------------------------: |
+|   🎨 **Soybean Admin**   | 基于 Vue3 + Vite + Naive UI 的现代化后台管理模板 |  [GitHub](https://github.com/soybeanjs/soybean-admin)   |
+| 🤖 **xsai-transformers** |  基于 Transformers.js 的浏览器端 AI 推理封装库   | [GitHub](https://github.com/moeru-ai/xsai-transformers) |
+
+> 💡 感谢以上开源项目的作者们，站在巨人的肩膀上，我们才能走得更远！
 
 ## 📜 许可证
 

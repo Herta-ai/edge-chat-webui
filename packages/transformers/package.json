@@ -1,0 +1,26 @@
+{
+  "name": "@ecw/transformers",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "module": "src/index.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./src/*"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.0.0-next.9",
+    "xsai-transformers": "^0.0.11"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}

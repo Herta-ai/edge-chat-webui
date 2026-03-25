@@ -1,71 +1,27 @@
-import type { RouteRecordRaw } from 'vue-router'
+import { generatedRoutes } from '../elegant/routes'
+import { layouts, views } from '../elegant/imports'
+import { transformElegantRoutesToVueRoutes } from '../elegant/transform'
+import type { CustomRoute, ElegantConstRoute, ElegantRoute } from '@elegant-router/types'
 
-export const routes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    name: 'root',
-    component: () => import('@/layouts/main/index.vue'),
-    redirect: '/home',
-    children: [
-      {
-        path: 'home',
-        name: 'home',
-        component: () => import('@/views/home/index.vue'),
-        meta: {
-          i18nKey: 'route.home',
-          title: 'Home',
-        },
-      },
-      {
-        path: 'setting',
-        name: 'setting',
-        component: () => import('@/views/setting/index.vue'),
-        meta: {
-          i18nKey: 'route.init',
-          title: 'Init',
-          unAuth: true,
-        },
-      },
-    ],
-  },
-  {
-    path: '/init',
-    name: 'init',
-    component: () => import('@/views/setting/index.vue'),
-    meta: {
-      i18nKey: 'route.init',
-      title: 'Init',
-      unAuth: true,
-    },
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'not-found',
-    component: () => import('@/views/exceptions/404.vue'),
-    meta: {
-      i18nKey: 'route.not-found',
-      title: 'Not Found',
-      constant: true,
-    },
-  },
-]
+/**
+ * custom routes
+ *
+ * @link https://github.com/soybeanjs/elegant-router?tab=readme-ov-file#custom-route
+ */
+const customRoutes: CustomRoute[] = []
 
-export const routeMap: Route.RouteMap = {
-  'root': '/',
-  'not-found': '/:pathMatch(.*)*',
-  'init': '/init',
-  'setting': '/setting',
-  'home': '/home',
+/** create routes when the auth route mode is static */
+export function createStaticRoutes() {
+  return {
+    constantRoutes: [...customRoutes, ...generatedRoutes] as ElegantRoute[],
+  }
 }
 
 /**
- * get route name by route path
- * @param path route path
+ * Get auth vue routes
+ *
+ * @param routes Elegant routes
  */
-export function getRouteName(path: Route.RoutePath) {
-  const routeEntries = Object.entries(routeMap) as [Route.RouteKey, Route.RoutePath][]
-
-  const routeName: Route.RouteKey | null = routeEntries.find(([, routePath]) => routePath === path)?.[0] || null
-
-  return routeName
+export function getAuthVueRoutes(routes: ElegantConstRoute[]) {
+  return transformElegantRoutesToVueRoutes(routes, layouts, views)
 }

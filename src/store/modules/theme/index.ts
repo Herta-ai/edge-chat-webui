@@ -1,15 +1,14 @@
 import { computed, effectScope, onScopeDispose, ref, toRefs, watch } from 'vue'
-import { useDateFormat, useNow, usePreferredColorScheme } from '@vueuse/core'
+import { useDateFormat, useEventListener, useNow, usePreferredColorScheme } from '@vueuse/core'
 import { defineStore } from 'pinia'
-import { getPaletteColorByNumber } from '@/utils/color'
+import { getPaletteColorByNumber } from '@sa/color'
 import { localStg } from '@/utils/storage'
-import { SetupStoreId } from '@/const'
-import { themeSettings } from '@/theme/settings'
-import { useAuthStore } from '../auth'
+import { SetupStoreId } from '@/enum'
 import {
   addThemeVarsToGlobal,
   createThemeToken,
   getNaiveTheme,
+  initThemeSettings,
   toggleAuxiliaryColorModes,
   toggleCssDarkMode,
 } from './shared'
@@ -19,10 +18,9 @@ import type { Ref } from 'vue'
 export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
   const scope = effectScope()
   const osTheme = usePreferredColorScheme()
-  const authStore = useAuthStore()
 
   /** Theme settings */
-  const settings: Ref<App.Theme.ThemeSetting> = ref(themeSettings)
+  const settings: Ref<App.Theme.ThemeSetting> = ref(initThemeSettings())
 
   /** Optional NaiveUI theme overrides from preset */
   const naiveThemeOverrides: Ref<App.Theme.NaiveUIThemeOverride | undefined> = ref(undefined)
@@ -41,8 +39,8 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
   /** grayscale mode */
   const grayscaleMode = computed(() => settings.value.grayscale)
 
-  /** colorWeakness mode */
-  const colourWeaknessMode = computed(() => settings.value.colorWeakness)
+  /** colourWeakness mode */
+  const colourWeaknessMode = computed(() => settings.value.colourWeakness)
 
   /** Theme colors */
   const themeColors = computed(() => {
@@ -76,8 +74,8 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
   const watermarkContent = computed(() => {
     const { watermark } = settings.value
 
-    if (watermark.enableUserName && authStore.userInfo.username) {
-      return authStore.userInfo.username
+    if (watermark.enableUserName) {
+      return 'TODO'
     }
 
     if (watermark.enableTime) {
@@ -113,12 +111,12 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
   }
 
   /**
-   * Set colorWeakness value
+   * Set colourWeakness value
    *
-   * @param isColorWeakness
+   * @param isColourWeakness
    */
-  function setColorWeakness(isColorWeakness: boolean) {
-    settings.value.colorWeakness = isColorWeakness
+  function setColourWeakness(isColourWeakness: boolean) {
+    settings.value.colourWeakness = isColourWeakness
   }
 
   /** Toggle theme scheme */
@@ -131,7 +129,7 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
 
     const nextThemeScheme = themeSchemes[nextIndex]
 
-    setThemeScheme(nextThemeScheme!)
+    setThemeScheme(nextThemeScheme)
   }
 
   /**
@@ -155,6 +153,15 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
     else {
       settings.value.otherColor[key] = colorValue
     }
+  }
+
+  /**
+   * Set theme layout
+   *
+   * @param mode Theme layout mode
+   */
+  function setThemeLayout(mode: UnionKey.ThemeLayoutMode) {
+    settings.value.layout.mode = mode
   }
 
   /** Setup theme vars to global */
@@ -215,14 +222,29 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
     }
   }
 
+  /** Cache theme settings */
+  function cacheThemeSettings() {
+    // const isProd = import.meta.env.PROD
+    //
+    // if (!isProd)
+    //   return
+
+    localStg.set('themeSettings', settings.value)
+  }
+
+  // cache theme settings when page is closed or refreshed
+  useEventListener(window, 'beforeunload', () => {
+    cacheThemeSettings()
+  })
+
   // watch store
   scope.run(() => {
     // watch dark mode
     watch(
       darkMode,
       (val) => {
-        localStg.set('darkMode', val)
         toggleCssDarkMode(val)
+        localStg.set('darkMode', val)
       },
       { immediate: true },
     )
@@ -268,15 +290,14 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
     settingsJson,
     watermarkContent,
     setGrayscale,
-    setColorWeakness,
+    setColourWeakness,
     resetStore,
     setThemeScheme,
     toggleThemeScheme,
     updateThemeColors,
+    setThemeLayout,
     setWatermarkEnableUserName,
     setWatermarkEnableTime,
     setNaiveThemeOverrides,
   }
-}, {
-  persist: true,
 })
