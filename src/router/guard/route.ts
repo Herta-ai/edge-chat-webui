@@ -10,6 +10,15 @@ import type { Router } from 'vue-router'
 export function createRouteGuard(router: Router) {
   router.beforeEach(async (to, from) => {
     const appStore = useAppStore()
+    const routeStore = useRouteStore()
+
+    if (!routeStore.isInitConstantRoute) {
+      // initialize the auth route
+      await routeStore.initConstantRoute()
+      return {
+        path: to.path,
+      }
+    }
 
     if (to.name === 'wizard') {
       return true
