@@ -9,7 +9,6 @@
         "@ecw/database": "workspace:*",
         "@ecw/transformers": "workspace:*",
         "@iconify/vue": "^5.0.0",
-        "@sa/axios": "workspace:*",
         "@sa/color": "workspace:*",
         "@sa/hooks": "workspace:*",
         "@sa/materials": "workspace:*",
