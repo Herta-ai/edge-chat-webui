@@ -64,8 +64,8 @@ _(项目开发中，截图占位区)_
 1. **克隆项目**
 
    ```bash
-   git clone https://github.com/yourusername/edgeflow-llm.git
-   cd edgeflow-llm
+   git clone https://github.com/Herta-ai/edge-chat-webui.git
+   cd edge-chat-webui
    ```
 
 2. **安装依赖**

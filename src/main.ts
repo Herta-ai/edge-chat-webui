@@ -4,11 +4,13 @@ import { setupAppVersionNotification, setupDayjs, setupLoading, setupNProgress }
 import { setupStore } from '@/store'
 import { setupRouter } from '@/router'
 import { setupI18n } from '@/locales'
+import { setupDB } from '@/database'
 import App from './App.vue'
 
 async function setupApp() {
   setupLoading()
   setupNProgress()
+  await setupDB()
   const app = createApp(App)
   setupStore(app)
   setupDayjs()

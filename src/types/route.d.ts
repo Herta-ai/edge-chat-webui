@@ -2,7 +2,8 @@ declare namespace Route {
   interface RouteMap {
     'root': '/'
     'not-found': '/:pathMatch(.*)*'
-    'login': '/login'
+    'init': '/init'
+    'setting': '/setting'
     'home': '/home'
   }
 

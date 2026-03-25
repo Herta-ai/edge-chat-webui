@@ -16,15 +16,25 @@ export const routes: RouteRecordRaw[] = [
           title: 'Home',
         },
       },
+      {
+        path: 'setting',
+        name: 'setting',
+        component: () => import('@/views/setting/index.vue'),
+        meta: {
+          i18nKey: 'route.init',
+          title: 'Init',
+          unAuth: true,
+        },
+      },
     ],
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/login/index.vue'),
+    path: '/init',
+    name: 'init',
+    component: () => import('@/views/setting/index.vue'),
     meta: {
-      i18nKey: 'route.login',
-      title: 'Login',
+      i18nKey: 'route.init',
+      title: 'Init',
       unAuth: true,
     },
   },
@@ -42,9 +52,10 @@ export const routes: RouteRecordRaw[] = [
 
 export const routeMap: Route.RouteMap = {
   'root': '/',
-  'home': '/home',
-  'login': '/login',
   'not-found': '/:pathMatch(.*)*',
+  'init': '/init',
+  'setting': '/setting',
+  'home': '/home',
 }
 
 /**

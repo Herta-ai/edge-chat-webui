@@ -13,6 +13,7 @@ import iconsResolver from 'unplugin-icons/resolver'
 import components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
+import { VitePWA } from 'vite-plugin-pwa'
 import { setupHtmlPlugin } from './build/html'
 import { ICONS_ASSETS } from './src/const'
 
@@ -65,6 +66,7 @@ export default defineConfig((configEnv) => {
         launchEditor: viteEnv.VITE_DEVTOOLS_LAUNCH_EDITOR || 'webstorm',
       }),
       setupHtmlPlugin(buildTime),
+      VitePWA(),
     ],
     define: {
       BUILD_TIME: JSON.stringify(buildTime),
