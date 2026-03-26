@@ -1,0 +1,3 @@
+[submodule "xsai-transformers"]
+	path = xsai-transformers
+	url = https://github.com/moeru-ai/xsai-transformers.git

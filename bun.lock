@@ -80,9 +80,9 @@
       },
       "devDependencies": {
         "@types/bun": "latest",
-        "@vitest/browser-playwright": "^4.1.1",
-        "@vitest/ui": "4.1.1",
-        "vitest": "^4.1.1",
+        "@vitest/browser-playwright": "catalog:",
+        "@vitest/ui": "catalog:",
+        "vitest": "catalog:",
       },
       "peerDependencies": {
         "typescript": "^5",
@@ -130,6 +130,9 @@
       "name": "@ecw/transformers",
       "dependencies": {
         "@huggingface/transformers": "^4.0.0-next.9",
+        "@vitest/browser-playwright": "catalog:",
+        "@vitest/ui": "catalog:",
+        "vitest": "catalog:",
         "xsai-transformers": "^0.0.11",
       },
       "devDependencies": {
@@ -160,6 +163,141 @@
         "@types/crypto-js": "4.2.2",
       },
     },
+    "xsai-transformers/packages/chat": {
+      "name": "@xsai-transformers/chat",
+      "version": "0.0.11",
+      "dependencies": {
+        "@huggingface/transformers": "^3.7.6",
+        "@moeru/eventa": "^0.3.0",
+        "@moeru/std": "^0.1.0-beta.13",
+        "@xsai-ext/shared-providers": "catalog:",
+        "@xsai-transformers/shared": "workspace:^",
+        "@xsai/generate-object": "catalog:",
+        "@xsai/generate-text": "catalog:",
+        "@xsai/shared": "catalog:",
+        "@xsai/shared-chat": "catalog:",
+        "@xsai/stream-object": "catalog:",
+        "@xsai/stream-text": "catalog:",
+        "gpuu": "^1.0.6",
+      },
+      "peerDependencies": {
+        "web-worker": "^1.5.0",
+      },
+      "optionalPeers": [
+        "web-worker",
+      ],
+    },
+    "xsai-transformers/packages/embed": {
+      "name": "@xsai-transformers/embed",
+      "version": "0.0.11",
+      "dependencies": {
+        "@huggingface/transformers": "^3.7.6",
+        "@moeru/eventa": "^0.3.0",
+        "@moeru/std": "^0.1.0-beta.13",
+        "@xsai-ext/shared-providers": "catalog:",
+        "@xsai-transformers/shared": "workspace:^",
+        "@xsai/embed": "catalog:",
+        "@xsai/shared": "catalog:",
+        "gpuu": "^1.0.6",
+      },
+      "peerDependencies": {
+        "web-worker": "^1.5.0",
+      },
+      "optionalPeers": [
+        "web-worker",
+      ],
+    },
+    "xsai-transformers/packages/shared": {
+      "name": "@xsai-transformers/shared",
+      "version": "0.0.11",
+      "dependencies": {
+        "@huggingface/transformers": "^3.7.6",
+        "@moeru/eventa": "^0.3.0",
+        "@moeru/std": "^0.1.0-beta.13",
+        "@xsai-ext/shared-providers": "catalog:",
+        "@xsai/shared": "catalog:",
+        "onnxruntime-common": "^1.23.2",
+      },
+    },
+    "xsai-transformers/packages/speech": {
+      "name": "@xsai-transformers/speech",
+      "version": "0.0.11",
+      "dependencies": {
+        "@huggingface/transformers": "^3.7.6",
+        "@xsai-ext/shared-providers": "catalog:",
+        "@xsai-transformers/shared": "workspace:^",
+        "@xsai/embed": "catalog:",
+        "@xsai/shared": "catalog:",
+      },
+      "peerDependencies": {
+        "web-worker": "^1.5.0",
+      },
+      "optionalPeers": [
+        "web-worker",
+      ],
+    },
+    "xsai-transformers/packages/transcription": {
+      "name": "@xsai-transformers/transcription",
+      "version": "0.0.11",
+      "dependencies": {
+        "@huggingface/transformers": "^3.7.6",
+        "@moeru/eventa": "^0.3.0",
+        "@moeru/std": "^0.1.0-beta.13",
+        "@xsai-ext/shared-providers": "catalog:",
+        "@xsai-transformers/shared": "workspace:^",
+        "@xsai/embed": "catalog:",
+        "@xsai/generate-transcription": "catalog:",
+        "@xsai/shared": "catalog:",
+        "gpuu": "^1.0.6",
+      },
+      "peerDependencies": {
+        "web-worker": "^1.5.0",
+      },
+      "optionalPeers": [
+        "web-worker",
+      ],
+    },
+    "xsai-transformers/packages/utils-vad": {
+      "name": "@xsai-transformers/utils-vad",
+      "version": "0.0.11",
+      "dependencies": {
+        "@huggingface/transformers": "^3.7.6",
+        "@xsai-ext/shared-providers": "catalog:",
+        "@xsai-transformers/shared": "workspace:^",
+        "@xsai/embed": "catalog:",
+        "@xsai/generate-transcription": "catalog:",
+        "@xsai/shared": "catalog:",
+        "gpuu": "^1.0.6",
+      },
+      "peerDependencies": {
+        "web-worker": "^1.5.0",
+      },
+      "optionalPeers": [
+        "web-worker",
+      ],
+    },
+  },
+  "catalog": {
+    "@vitest/browser-playwright": "^4.1.1",
+    "@vitest/ui": "^4.1.1",
+    "@xsai-ext/providers-cloud": "^0.4.0-beta.9",
+    "@xsai-ext/providers-local": "^0.4.0-beta.9",
+    "@xsai-ext/shared-providers": "^0.4.0-beta.9",
+    "@xsai/embed": "^0.4.0-beta.9",
+    "@xsai/generate-object": "^0.4.0-beta.9",
+    "@xsai/generate-speech": "^0.4.0-beta.9",
+    "@xsai/generate-text": "0.4.0-beta.4",
+    "@xsai/generate-transcription": "^0.4.0-beta.9",
+    "@xsai/model": "^0.4.0-beta.9",
+    "@xsai/shared": "^0.4.0-beta.9",
+    "@xsai/shared-chat": "0.4.0-beta.4",
+    "@xsai/stream-object": "^0.4.0-beta.9",
+    "@xsai/stream-text": "0.4.0-beta.4",
+    "@xsai/tool": "^0.4.0-beta.9",
+    "@xsai/utils-chat": "^0.4.0-beta.9",
+    "vitest": "^4.1.1",
+    "xsai": "^0.4.0-beta.9",
+    "xsschema": "^0.4.0-beta.9",
   },
   "packages": {
     "@antfu/eslint-config": ["@antfu/eslint-config@7.7.3", "https://registry.npmmirror.com/@antfu/eslint-config/-/eslint-config-7.7.3.tgz", { "dependencies": { "@antfu/install-pkg": "^1.1.0", "@clack/prompts": "^1.1.0", "@e18e/eslint-plugin": "^0.2.0", "@eslint-community/eslint-plugin-eslint-comments": "^4.7.1", "@eslint/markdown": "^7.5.1", "@stylistic/eslint-plugin": "^5.10.0", "@typescript-eslint/eslint-plugin": "^8.57.0", "@typescript-eslint/parser": "^8.57.0", "@vitest/eslint-plugin": "^1.6.10", "ansis": "^4.2.0", "cac": "^7.0.0", "eslint-config-flat-gitignore": "^2.2.1", "eslint-flat-config-utils": "^3.0.2", "eslint-merge-processors": "^2.0.0", "eslint-plugin-antfu": "^3.2.2", "eslint-plugin-command": "^3.5.2", "eslint-plugin-import-lite": "^0.5.2", "eslint-plugin-jsdoc": "^62.7.1", "eslint-plugin-jsonc": "^3.1.1", "eslint-plugin-n": "^17.24.0", "eslint-plugin-no-only-tests": "^3.3.0", "eslint-plugin-perfectionist": "^5.6.0", "eslint-plugin-pnpm": "^1.6.0", "eslint-plugin-regexp": "^3.1.0", "eslint-plugin-toml": "^1.3.1", "eslint-plugin-unicorn": "^63.0.0", "eslint-plugin-unused-imports": "^4.4.1", "eslint-plugin-vue": "^10.8.0", "eslint-plugin-yml": "^3.3.1", "eslint-processor-vue-blocks": "^2.0.0", "globals": "^17.4.0", "local-pkg": "^1.1.2", "parse-gitignore": "^2.0.0", "toml-eslint-parser": "^1.0.3", "vue-eslint-parser": "^10.4.0", "yaml-eslint-parser": "^2.0.0" }, "peerDependencies": { "@angular-eslint/eslint-plugin": "^21.1.0", "@angular-eslint/eslint-plugin-template": "^21.1.0", "@angular-eslint/template-parser": "^21.1.0", "@eslint-react/eslint-plugin": "^2.11.0", "@next/eslint-plugin-next": ">=15.0.0", "@prettier/plugin-xml": "^3.4.1", "@unocss/eslint-plugin": ">=0.50.0", "astro-eslint-parser": "^1.0.2", "eslint": "^9.10.0 || ^10.0.0", "eslint-plugin-astro": "^1.2.0", "eslint-plugin-format": ">=0.1.0", "eslint-plugin-jsx-a11y": ">=6.10.2", "eslint-plugin-react-hooks": "^7.0.0", "eslint-plugin-react-refresh": "^0.5.0", "eslint-plugin-solid": "^0.14.3", "eslint-plugin-svelte": ">=2.35.1", "eslint-plugin-vuejs-accessibility": "^2.4.1", "prettier-plugin-astro": "^0.14.0", "prettier-plugin-slidev": "^1.0.5", "svelte-eslint-parser": ">=0.37.0" }, "optionalPeers": ["@angular-eslint/eslint-plugin", "@angular-eslint/eslint-plugin-template", "@angular-eslint/template-parser", "@eslint-react/eslint-plugin", "@next/eslint-plugin-next", "@prettier/plugin-xml", "@unocss/eslint-plugin", "astro-eslint-parser", "eslint-plugin-astro", "eslint-plugin-format", "eslint-plugin-jsx-a11y", "eslint-plugin-react-hooks", "eslint-plugin-react-refresh", "eslint-plugin-solid", "eslint-plugin-svelte", "eslint-plugin-vuejs-accessibility", "prettier-plugin-astro", "prettier-plugin-slidev", "svelte-eslint-parser"], "bin": { "eslint-config": "bin/index.mjs" } }, "sha512-BtroDxTvmWtvr3yJkdWVCvwsKlnEdkreoeOyrdNezc/W5qaiQNf2xjcsQ3N5Yy0x27h+0WFfW8rG8YlVioG6dw=="],
@@ -1018,13 +1156,17 @@
 
     "@xsai-ext/shared-providers": ["@xsai-ext/shared-providers@0.4.0-beta.12", "https://registry.npmmirror.com/@xsai-ext/shared-providers/-/shared-providers-0.4.0-beta.12.tgz", { "dependencies": { "@xsai/shared": "~0.4.0-beta.12" } }, "sha512-ME9L8BtapghM0W2SiTdulq0IvU3WR0h7dZ3k1bg/eXag2XUdbh1jy0zYY3oGmpMBmKXO8JXcArS1mq87gpsK0A=="],
 
-    "@xsai-transformers/chat": ["@xsai-transformers/chat@0.0.11", "https://registry.npmmirror.com/@xsai-transformers/chat/-/chat-0.0.11.tgz", { "dependencies": { "@huggingface/transformers": "^3.7.6", "@moeru/eventa": "^0.3.0", "@moeru/std": "^0.1.0-beta.13", "@xsai-ext/shared-providers": "^0.4.0-beta.9", "@xsai-transformers/shared": "^0.0.11", "@xsai/generate-object": "^0.4.0-beta.9", "@xsai/generate-text": "0.4.0-beta.4", "@xsai/shared": "^0.4.0-beta.9", "@xsai/shared-chat": "0.4.0-beta.4", "@xsai/stream-object": "^0.4.0-beta.9", "@xsai/stream-text": "0.4.0-beta.4", "gpuu": "^1.0.6" }, "peerDependencies": { "web-worker": "^1.5.0" }, "optionalPeers": ["web-worker"] }, "sha512-pzK46WOWseze00Hvp9uxb4PQyy9ZHFcE9Sjlcb8Trx13DXSNlfXde08501JtmVE68sgmmz1tdi+BmISj4NyZig=="],
+    "@xsai-transformers/chat": ["@xsai-transformers/chat@workspace:xsai-transformers/packages/chat"],
 
-    "@xsai-transformers/embed": ["@xsai-transformers/embed@0.0.11", "https://registry.npmmirror.com/@xsai-transformers/embed/-/embed-0.0.11.tgz", { "dependencies": { "@huggingface/transformers": "^3.7.6", "@moeru/eventa": "^0.3.0", "@moeru/std": "^0.1.0-beta.13", "@xsai-ext/shared-providers": "^0.4.0-beta.9", "@xsai-transformers/shared": "^0.0.11", "@xsai/embed": "^0.4.0-beta.9", "@xsai/shared": "^0.4.0-beta.9", "gpuu": "^1.0.6" }, "peerDependencies": { "web-worker": "^1.5.0" }, "optionalPeers": ["web-worker"] }, "sha512-O00P0omx3DwPGf66WSU7y3ERmH4r25skxwaBCUp4DZleHNqQEN5okbgDIZJUSE+0SCsKpXRcmhLCWyM+WpfQvw=="],
+    "@xsai-transformers/embed": ["@xsai-transformers/embed@workspace:xsai-transformers/packages/embed"],
 
-    "@xsai-transformers/shared": ["@xsai-transformers/shared@0.0.11", "https://registry.npmmirror.com/@xsai-transformers/shared/-/shared-0.0.11.tgz", { "dependencies": { "@huggingface/transformers": "^3.7.6", "@moeru/eventa": "^0.3.0", "@moeru/std": "^0.1.0-beta.13", "@xsai-ext/shared-providers": "^0.4.0-beta.9", "@xsai/shared": "^0.4.0-beta.9", "onnxruntime-common": "^1.23.2" } }, "sha512-B63NepwlS+qU1A9dEm71PKZl79qGL04ab1x2VmqqGxUPLSiCMDk/IWnA1anK97lmEjXxbqwyijxOmKtrAPfqQQ=="],
+    "@xsai-transformers/shared": ["@xsai-transformers/shared@workspace:xsai-transformers/packages/shared"],
 
-    "@xsai-transformers/transcription": ["@xsai-transformers/transcription@0.0.11", "https://registry.npmmirror.com/@xsai-transformers/transcription/-/transcription-0.0.11.tgz", { "dependencies": { "@huggingface/transformers": "^3.7.6", "@moeru/eventa": "^0.3.0", "@moeru/std": "^0.1.0-beta.13", "@xsai-ext/shared-providers": "^0.4.0-beta.9", "@xsai-transformers/shared": "^0.0.11", "@xsai/embed": "^0.4.0-beta.9", "@xsai/generate-transcription": "^0.4.0-beta.9", "@xsai/shared": "^0.4.0-beta.9", "gpuu": "^1.0.6" }, "peerDependencies": { "web-worker": "^1.5.0" }, "optionalPeers": ["web-worker"] }, "sha512-wDSpzHaAp6GkyQBSmlSi55opjZgsIxfUNPbOI0aoPcBxYDwSdfakhAj2YbflQ4Opku2nLb3BINPHiVsSrVhobQ=="],
+    "@xsai-transformers/speech": ["@xsai-transformers/speech@workspace:xsai-transformers/packages/speech"],
+
+    "@xsai-transformers/transcription": ["@xsai-transformers/transcription@workspace:xsai-transformers/packages/transcription"],
+
+    "@xsai-transformers/utils-vad": ["@xsai-transformers/utils-vad@workspace:xsai-transformers/packages/utils-vad"],
 
     "@xsai/embed": ["@xsai/embed@0.4.4", "https://registry.npmmirror.com/@xsai/embed/-/embed-0.4.4.tgz", { "dependencies": { "@xsai/shared": "~0.4.4" } }, "sha512-3qKtjjerzola+ggmpfEgESbxQsTkPAKY/Y3hEZiDSFDbRc+3m1AHmMMW+kNiis+Fz+GK8/zDAeVUNMx457XntA=="],
 
@@ -2418,7 +2560,7 @@
 
     "y18n": ["y18n@5.0.8", "https://registry.npmmirror.com/y18n/-/y18n-5.0.8.tgz", {}, "sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA=="],
 
-    "yallist": ["yallist@3.1.1", "https://registry.npmmirror.com/yallist/-/yallist-3.1.1.tgz", {}, "sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g=="],
+    "yallist": ["yallist@5.0.0", "https://registry.npmmirror.com/yallist/-/yallist-5.0.0.tgz", {}, "sha512-YgvUTfwqyc7UXVMrB+SImsVYSmTS8X/tSrtdNZMImM+n7+QTriRXyXim0mBrTXNeqzVF0KWGgHPeiyViFFrNDw=="],
 
     "yaml": ["yaml@2.8.3", "https://registry.npmmirror.com/yaml/-/yaml-2.8.3.tgz", { "bin": { "yaml": "bin.mjs" } }, "sha512-AvbaCLOO2Otw/lW5bmh9d/WEdcDFdQp2Z2ZUH3pX9U2ihyUY0nvLv7J6TrWowklRGPYbB/IuIMfYgxaCPg5Bpg=="],
 
@@ -2546,7 +2688,11 @@
 
     "@xsai-transformers/shared/@huggingface/transformers": ["@huggingface/transformers@3.8.1", "https://registry.npmmirror.com/@huggingface/transformers/-/transformers-3.8.1.tgz", { "dependencies": { "@huggingface/jinja": "^0.5.3", "onnxruntime-node": "1.21.0", "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4", "sharp": "^0.34.1" } }, "sha512-tsTk4zVjImqdqjS8/AOZg2yNLd1z9S5v+7oUPpXaasDRwEDhB+xnglK1k5cad26lL5/ZIaeREgWWy0bs9y9pPA=="],
 
+    "@xsai-transformers/speech/@huggingface/transformers": ["@huggingface/transformers@3.8.1", "https://registry.npmmirror.com/@huggingface/transformers/-/transformers-3.8.1.tgz", { "dependencies": { "@huggingface/jinja": "^0.5.3", "onnxruntime-node": "1.21.0", "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4", "sharp": "^0.34.1" } }, "sha512-tsTk4zVjImqdqjS8/AOZg2yNLd1z9S5v+7oUPpXaasDRwEDhB+xnglK1k5cad26lL5/ZIaeREgWWy0bs9y9pPA=="],
+
     "@xsai-transformers/transcription/@huggingface/transformers": ["@huggingface/transformers@3.8.1", "https://registry.npmmirror.com/@huggingface/transformers/-/transformers-3.8.1.tgz", { "dependencies": { "@huggingface/jinja": "^0.5.3", "onnxruntime-node": "1.21.0", "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4", "sharp": "^0.34.1" } }, "sha512-tsTk4zVjImqdqjS8/AOZg2yNLd1z9S5v+7oUPpXaasDRwEDhB+xnglK1k5cad26lL5/ZIaeREgWWy0bs9y9pPA=="],
+
+    "@xsai-transformers/utils-vad/@huggingface/transformers": ["@huggingface/transformers@3.8.1", "https://registry.npmmirror.com/@huggingface/transformers/-/transformers-3.8.1.tgz", { "dependencies": { "@huggingface/jinja": "^0.5.3", "onnxruntime-node": "1.21.0", "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4", "sharp": "^0.34.1" } }, "sha512-tsTk4zVjImqdqjS8/AOZg2yNLd1z9S5v+7oUPpXaasDRwEDhB+xnglK1k5cad26lL5/ZIaeREgWWy0bs9y9pPA=="],
 
     "@xsai/generate-object/@xsai/generate-text": ["@xsai/generate-text@0.4.4", "https://registry.npmmirror.com/@xsai/generate-text/-/generate-text-0.4.4.tgz", { "dependencies": { "@xsai/shared": "~0.4.4", "@xsai/shared-chat": "~0.4.4" } }, "sha512-eDLeRaaeY3SyjrICeIfPXksqfk36oXLTcjinDNLrsiFHqmNvxfbq3WRccy6hjZy4aOWhkV+qPFZnB3ZIyTfs8w=="],
 
@@ -2581,6 +2727,8 @@
     "flat-cache/flatted": ["flatted@3.4.2", "https://registry.npmmirror.com/flatted/-/flatted-3.4.2.tgz", {}, "sha512-PjDse7RzhcPkIJwy5t7KPWQSZ9cAbzQXcafsetQoD7sOJRQlGikNbx7yZp2OotDnJyrDcbyRq3Ttb18iYOqkxA=="],
 
     "glob/minimatch": ["minimatch@9.0.9", "https://registry.npmmirror.com/minimatch/-/minimatch-9.0.9.tgz", { "dependencies": { "brace-expansion": "^2.0.2" } }, "sha512-OBwBN9AL4dqmETlpS2zasx+vTeWclWzkblfZk7KTA5j3jeOONz/tRCnZomUyvNg83wL5Zv9Ss6HMJXAgL8R2Yg=="],
+
+    "lru-cache/yallist": ["yallist@3.1.1", "https://registry.npmmirror.com/yallist/-/yallist-3.1.1.tgz", {}, "sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g=="],
 
     "magic-regexp/estree-walker": ["estree-walker@3.0.3", "https://registry.npmmirror.com/estree-walker/-/estree-walker-3.0.3.tgz", { "dependencies": { "@types/estree": "^1.0.0" } }, "sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g=="],
 
@@ -2629,8 +2777,6 @@
     "svelte-eslint-parser/eslint-visitor-keys": ["eslint-visitor-keys@4.2.1", "https://registry.npmmirror.com/eslint-visitor-keys/-/eslint-visitor-keys-4.2.1.tgz", {}, "sha512-Uhdk5sfqcee/9H/rCOJikYz67o0a2Tw2hGRPOG2Y1R2dg7brRe1uG0yaNQDHu+TO/uQPF/5eCapvYSmHUjt7JQ=="],
 
     "svelte-eslint-parser/espree": ["espree@10.4.0", "https://registry.npmmirror.com/espree/-/espree-10.4.0.tgz", { "dependencies": { "acorn": "^8.15.0", "acorn-jsx": "^5.3.2", "eslint-visitor-keys": "^4.2.1" } }, "sha512-j6PAQ2uUr79PZhBjP5C5fhl8e39FmRnOjsD5lGnWrFU8i2G776tBK7+nP8KuQUTTyAZUwfQqXAgrVH5MbH9CYQ=="],
-
-    "tar/yallist": ["yallist@5.0.0", "https://registry.npmmirror.com/yallist/-/yallist-5.0.0.tgz", {}, "sha512-YgvUTfwqyc7UXVMrB+SImsVYSmTS8X/tSrtdNZMImM+n7+QTriRXyXim0mBrTXNeqzVF0KWGgHPeiyViFFrNDw=="],
 
     "tempy/is-stream": ["is-stream@2.0.1", "https://registry.npmmirror.com/is-stream/-/is-stream-2.0.1.tgz", {}, "sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg=="],
 
@@ -2681,6 +2827,14 @@
     "workbox-build/pretty-bytes": ["pretty-bytes@5.6.0", "https://registry.npmmirror.com/pretty-bytes/-/pretty-bytes-5.6.0.tgz", {}, "sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg=="],
 
     "workbox-build/source-map": ["source-map@0.8.0-beta.0", "https://registry.npmmirror.com/source-map/-/source-map-0.8.0-beta.0.tgz", { "dependencies": { "whatwg-url": "^7.0.0" } }, "sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA=="],
+
+    "xsai-transformers/@xsai-transformers/chat": ["@xsai-transformers/chat@0.0.11", "https://registry.npmmirror.com/@xsai-transformers/chat/-/chat-0.0.11.tgz", { "dependencies": { "@huggingface/transformers": "^3.7.6", "@moeru/eventa": "^0.3.0", "@moeru/std": "^0.1.0-beta.13", "@xsai-ext/shared-providers": "^0.4.0-beta.9", "@xsai-transformers/shared": "^0.0.11", "@xsai/generate-object": "^0.4.0-beta.9", "@xsai/generate-text": "0.4.0-beta.4", "@xsai/shared": "^0.4.0-beta.9", "@xsai/shared-chat": "0.4.0-beta.4", "@xsai/stream-object": "^0.4.0-beta.9", "@xsai/stream-text": "0.4.0-beta.4", "gpuu": "^1.0.6" }, "peerDependencies": { "web-worker": "^1.5.0" }, "optionalPeers": ["web-worker"] }, "sha512-pzK46WOWseze00Hvp9uxb4PQyy9ZHFcE9Sjlcb8Trx13DXSNlfXde08501JtmVE68sgmmz1tdi+BmISj4NyZig=="],
+
+    "xsai-transformers/@xsai-transformers/embed": ["@xsai-transformers/embed@0.0.11", "https://registry.npmmirror.com/@xsai-transformers/embed/-/embed-0.0.11.tgz", { "dependencies": { "@huggingface/transformers": "^3.7.6", "@moeru/eventa": "^0.3.0", "@moeru/std": "^0.1.0-beta.13", "@xsai-ext/shared-providers": "^0.4.0-beta.9", "@xsai-transformers/shared": "^0.0.11", "@xsai/embed": "^0.4.0-beta.9", "@xsai/shared": "^0.4.0-beta.9", "gpuu": "^1.0.6" }, "peerDependencies": { "web-worker": "^1.5.0" }, "optionalPeers": ["web-worker"] }, "sha512-O00P0omx3DwPGf66WSU7y3ERmH4r25skxwaBCUp4DZleHNqQEN5okbgDIZJUSE+0SCsKpXRcmhLCWyM+WpfQvw=="],
+
+    "xsai-transformers/@xsai-transformers/shared": ["@xsai-transformers/shared@0.0.11", "https://registry.npmmirror.com/@xsai-transformers/shared/-/shared-0.0.11.tgz", { "dependencies": { "@huggingface/transformers": "^3.7.6", "@moeru/eventa": "^0.3.0", "@moeru/std": "^0.1.0-beta.13", "@xsai-ext/shared-providers": "^0.4.0-beta.9", "@xsai/shared": "^0.4.0-beta.9", "onnxruntime-common": "^1.23.2" } }, "sha512-B63NepwlS+qU1A9dEm71PKZl79qGL04ab1x2VmqqGxUPLSiCMDk/IWnA1anK97lmEjXxbqwyijxOmKtrAPfqQQ=="],
+
+    "xsai-transformers/@xsai-transformers/transcription": ["@xsai-transformers/transcription@0.0.11", "https://registry.npmmirror.com/@xsai-transformers/transcription/-/transcription-0.0.11.tgz", { "dependencies": { "@huggingface/transformers": "^3.7.6", "@moeru/eventa": "^0.3.0", "@moeru/std": "^0.1.0-beta.13", "@xsai-ext/shared-providers": "^0.4.0-beta.9", "@xsai-transformers/shared": "^0.0.11", "@xsai/embed": "^0.4.0-beta.9", "@xsai/generate-transcription": "^0.4.0-beta.9", "@xsai/shared": "^0.4.0-beta.9", "gpuu": "^1.0.6" }, "peerDependencies": { "web-worker": "^1.5.0" }, "optionalPeers": ["web-worker"] }, "sha512-wDSpzHaAp6GkyQBSmlSi55opjZgsIxfUNPbOI0aoPcBxYDwSdfakhAj2YbflQ4Opku2nLb3BINPHiVsSrVhobQ=="],
 
     "@apideck/better-ajv-errors/ajv/json-schema-traverse": ["json-schema-traverse@1.0.0", "https://registry.npmmirror.com/json-schema-traverse/-/json-schema-traverse-1.0.0.tgz", {}, "sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug=="],
 
@@ -2734,9 +2888,17 @@
 
     "@xsai-transformers/shared/@huggingface/transformers/onnxruntime-web": ["onnxruntime-web@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-web/-/onnxruntime-web-1.22.0-dev.20250409-89f8206ba4.tgz", { "dependencies": { "flatbuffers": "^25.1.24", "guid-typescript": "^1.0.9", "long": "^5.2.3", "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4", "platform": "^1.3.6", "protobufjs": "^7.2.4" } }, "sha512-0uS76OPgH0hWCPrFKlL8kYVV7ckM7t/36HfbgoFw6Nd0CZVVbQC4PkrR8mBX8LtNUFZO25IQBqV2Hx2ho3FlbQ=="],
 
+    "@xsai-transformers/speech/@huggingface/transformers/onnxruntime-node": ["onnxruntime-node@1.21.0", "https://registry.npmmirror.com/onnxruntime-node/-/onnxruntime-node-1.21.0.tgz", { "dependencies": { "global-agent": "^3.0.0", "onnxruntime-common": "1.21.0", "tar": "^7.0.1" }, "os": [ "linux", "win32", "darwin", ] }, "sha512-NeaCX6WW2L8cRCSqy3bInlo5ojjQqu2fD3D+9W5qb5irwxhEyWKXeH2vZ8W9r6VxaMPUan+4/7NDwZMtouZxEw=="],
+
+    "@xsai-transformers/speech/@huggingface/transformers/onnxruntime-web": ["onnxruntime-web@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-web/-/onnxruntime-web-1.22.0-dev.20250409-89f8206ba4.tgz", { "dependencies": { "flatbuffers": "^25.1.24", "guid-typescript": "^1.0.9", "long": "^5.2.3", "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4", "platform": "^1.3.6", "protobufjs": "^7.2.4" } }, "sha512-0uS76OPgH0hWCPrFKlL8kYVV7ckM7t/36HfbgoFw6Nd0CZVVbQC4PkrR8mBX8LtNUFZO25IQBqV2Hx2ho3FlbQ=="],
+
     "@xsai-transformers/transcription/@huggingface/transformers/onnxruntime-node": ["onnxruntime-node@1.21.0", "https://registry.npmmirror.com/onnxruntime-node/-/onnxruntime-node-1.21.0.tgz", { "dependencies": { "global-agent": "^3.0.0", "onnxruntime-common": "1.21.0", "tar": "^7.0.1" }, "os": [ "linux", "win32", "darwin", ] }, "sha512-NeaCX6WW2L8cRCSqy3bInlo5ojjQqu2fD3D+9W5qb5irwxhEyWKXeH2vZ8W9r6VxaMPUan+4/7NDwZMtouZxEw=="],
 
     "@xsai-transformers/transcription/@huggingface/transformers/onnxruntime-web": ["onnxruntime-web@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-web/-/onnxruntime-web-1.22.0-dev.20250409-89f8206ba4.tgz", { "dependencies": { "flatbuffers": "^25.1.24", "guid-typescript": "^1.0.9", "long": "^5.2.3", "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4", "platform": "^1.3.6", "protobufjs": "^7.2.4" } }, "sha512-0uS76OPgH0hWCPrFKlL8kYVV7ckM7t/36HfbgoFw6Nd0CZVVbQC4PkrR8mBX8LtNUFZO25IQBqV2Hx2ho3FlbQ=="],
+
+    "@xsai-transformers/utils-vad/@huggingface/transformers/onnxruntime-node": ["onnxruntime-node@1.21.0", "https://registry.npmmirror.com/onnxruntime-node/-/onnxruntime-node-1.21.0.tgz", { "dependencies": { "global-agent": "^3.0.0", "onnxruntime-common": "1.21.0", "tar": "^7.0.1" }, "os": [ "linux", "win32", "darwin", ] }, "sha512-NeaCX6WW2L8cRCSqy3bInlo5ojjQqu2fD3D+9W5qb5irwxhEyWKXeH2vZ8W9r6VxaMPUan+4/7NDwZMtouZxEw=="],
+
+    "@xsai-transformers/utils-vad/@huggingface/transformers/onnxruntime-web": ["onnxruntime-web@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-web/-/onnxruntime-web-1.22.0-dev.20250409-89f8206ba4.tgz", { "dependencies": { "flatbuffers": "^25.1.24", "guid-typescript": "^1.0.9", "long": "^5.2.3", "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4", "platform": "^1.3.6", "protobufjs": "^7.2.4" } }, "sha512-0uS76OPgH0hWCPrFKlL8kYVV7ckM7t/36HfbgoFw6Nd0CZVVbQC4PkrR8mBX8LtNUFZO25IQBqV2Hx2ho3FlbQ=="],
 
     "@xsai/generate-object/@xsai/generate-text/@xsai/shared-chat": ["@xsai/shared-chat@0.4.4", "https://registry.npmmirror.com/@xsai/shared-chat/-/shared-chat-0.4.4.tgz", { "dependencies": { "@xsai/shared": "~0.4.4" } }, "sha512-R/lJDt6SnENVaJcUCO1USVuO/G6qtCbJqopPqARF1n20KWDbchLwW/nvkuZH1TM9vMxaywVNmO9sNJ+uoWJEPA=="],
 
@@ -2828,6 +2990,14 @@
 
     "workbox-build/glob/path-scurry": ["path-scurry@2.0.2", "https://registry.npmmirror.com/path-scurry/-/path-scurry-2.0.2.tgz", { "dependencies": { "lru-cache": "^11.0.0", "minipass": "^7.1.2" } }, "sha512-3O/iVVsJAPsOnpwWIeD+d6z/7PmqApyQePUtCndjatj/9I5LylHvt5qluFaBT3I5h3r1ejfR056c+FCv+NnNXg=="],
 
+    "xsai-transformers/@xsai-transformers/chat/@huggingface/transformers": ["@huggingface/transformers@3.8.1", "https://registry.npmmirror.com/@huggingface/transformers/-/transformers-3.8.1.tgz", { "dependencies": { "@huggingface/jinja": "^0.5.3", "onnxruntime-node": "1.21.0", "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4", "sharp": "^0.34.1" } }, "sha512-tsTk4zVjImqdqjS8/AOZg2yNLd1z9S5v+7oUPpXaasDRwEDhB+xnglK1k5cad26lL5/ZIaeREgWWy0bs9y9pPA=="],
+
+    "xsai-transformers/@xsai-transformers/embed/@huggingface/transformers": ["@huggingface/transformers@3.8.1", "https://registry.npmmirror.com/@huggingface/transformers/-/transformers-3.8.1.tgz", { "dependencies": { "@huggingface/jinja": "^0.5.3", "onnxruntime-node": "1.21.0", "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4", "sharp": "^0.34.1" } }, "sha512-tsTk4zVjImqdqjS8/AOZg2yNLd1z9S5v+7oUPpXaasDRwEDhB+xnglK1k5cad26lL5/ZIaeREgWWy0bs9y9pPA=="],
+
+    "xsai-transformers/@xsai-transformers/shared/@huggingface/transformers": ["@huggingface/transformers@3.8.1", "https://registry.npmmirror.com/@huggingface/transformers/-/transformers-3.8.1.tgz", { "dependencies": { "@huggingface/jinja": "^0.5.3", "onnxruntime-node": "1.21.0", "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4", "sharp": "^0.34.1" } }, "sha512-tsTk4zVjImqdqjS8/AOZg2yNLd1z9S5v+7oUPpXaasDRwEDhB+xnglK1k5cad26lL5/ZIaeREgWWy0bs9y9pPA=="],
+
+    "xsai-transformers/@xsai-transformers/transcription/@huggingface/transformers": ["@huggingface/transformers@3.8.1", "https://registry.npmmirror.com/@huggingface/transformers/-/transformers-3.8.1.tgz", { "dependencies": { "@huggingface/jinja": "^0.5.3", "onnxruntime-node": "1.21.0", "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4", "sharp": "^0.34.1" } }, "sha512-tsTk4zVjImqdqjS8/AOZg2yNLd1z9S5v+7oUPpXaasDRwEDhB+xnglK1k5cad26lL5/ZIaeREgWWy0bs9y9pPA=="],
+
     "@elegant-router/core/chokidar/readdirp/picomatch": ["picomatch@2.3.2", "https://registry.npmmirror.com/picomatch/-/picomatch-2.3.2.tgz", {}, "sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA=="],
 
     "@xsai-transformers/chat/@huggingface/transformers/onnxruntime-node/onnxruntime-common": ["onnxruntime-common@1.21.0", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.21.0.tgz", {}, "sha512-Q632iLLrtCAVOTO65dh2+mNbQir/QNTVBG3h/QdZBpns7mZ0RYbLRBgGABPbpU9351AgYy7SJf1WaeVwMrBFPQ=="],
@@ -2842,9 +3012,17 @@
 
     "@xsai-transformers/shared/@huggingface/transformers/onnxruntime-web/onnxruntime-common": ["onnxruntime-common@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.22.0-dev.20250409-89f8206ba4.tgz", {}, "sha512-vDJMkfCfb0b1A836rgHj+ORuZf4B4+cc2bASQtpeoJLueuFc5DuYwjIZUBrSvx/fO5IrLjLz+oTrB3pcGlhovQ=="],
 
+    "@xsai-transformers/speech/@huggingface/transformers/onnxruntime-node/onnxruntime-common": ["onnxruntime-common@1.21.0", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.21.0.tgz", {}, "sha512-Q632iLLrtCAVOTO65dh2+mNbQir/QNTVBG3h/QdZBpns7mZ0RYbLRBgGABPbpU9351AgYy7SJf1WaeVwMrBFPQ=="],
+
+    "@xsai-transformers/speech/@huggingface/transformers/onnxruntime-web/onnxruntime-common": ["onnxruntime-common@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.22.0-dev.20250409-89f8206ba4.tgz", {}, "sha512-vDJMkfCfb0b1A836rgHj+ORuZf4B4+cc2bASQtpeoJLueuFc5DuYwjIZUBrSvx/fO5IrLjLz+oTrB3pcGlhovQ=="],
+
     "@xsai-transformers/transcription/@huggingface/transformers/onnxruntime-node/onnxruntime-common": ["onnxruntime-common@1.21.0", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.21.0.tgz", {}, "sha512-Q632iLLrtCAVOTO65dh2+mNbQir/QNTVBG3h/QdZBpns7mZ0RYbLRBgGABPbpU9351AgYy7SJf1WaeVwMrBFPQ=="],
 
     "@xsai-transformers/transcription/@huggingface/transformers/onnxruntime-web/onnxruntime-common": ["onnxruntime-common@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.22.0-dev.20250409-89f8206ba4.tgz", {}, "sha512-vDJMkfCfb0b1A836rgHj+ORuZf4B4+cc2bASQtpeoJLueuFc5DuYwjIZUBrSvx/fO5IrLjLz+oTrB3pcGlhovQ=="],
+
+    "@xsai-transformers/utils-vad/@huggingface/transformers/onnxruntime-node/onnxruntime-common": ["onnxruntime-common@1.21.0", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.21.0.tgz", {}, "sha512-Q632iLLrtCAVOTO65dh2+mNbQir/QNTVBG3h/QdZBpns7mZ0RYbLRBgGABPbpU9351AgYy7SJf1WaeVwMrBFPQ=="],
+
+    "@xsai-transformers/utils-vad/@huggingface/transformers/onnxruntime-web/onnxruntime-common": ["onnxruntime-common@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.22.0-dev.20250409-89f8206ba4.tgz", {}, "sha512-vDJMkfCfb0b1A836rgHj+ORuZf4B4+cc2bASQtpeoJLueuFc5DuYwjIZUBrSvx/fO5IrLjLz+oTrB3pcGlhovQ=="],
 
     "filelist/minimatch/brace-expansion/balanced-match": ["balanced-match@1.0.2", "https://registry.npmmirror.com/balanced-match/-/balanced-match-1.0.2.tgz", {}, "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="],
 
@@ -2862,8 +3040,40 @@
 
     "workbox-build/glob/path-scurry/lru-cache": ["lru-cache@11.2.7", "https://registry.npmmirror.com/lru-cache/-/lru-cache-11.2.7.tgz", {}, "sha512-aY/R+aEsRelme17KGQa/1ZSIpLpNYYrhcrepKTZgE+W3WM16YMCaPwOHLHsmopZHELU0Ojin1lPVxKR0MihncA=="],
 
+    "xsai-transformers/@xsai-transformers/chat/@huggingface/transformers/onnxruntime-node": ["onnxruntime-node@1.21.0", "https://registry.npmmirror.com/onnxruntime-node/-/onnxruntime-node-1.21.0.tgz", { "dependencies": { "global-agent": "^3.0.0", "onnxruntime-common": "1.21.0", "tar": "^7.0.1" }, "os": [ "linux", "win32", "darwin", ] }, "sha512-NeaCX6WW2L8cRCSqy3bInlo5ojjQqu2fD3D+9W5qb5irwxhEyWKXeH2vZ8W9r6VxaMPUan+4/7NDwZMtouZxEw=="],
+
+    "xsai-transformers/@xsai-transformers/chat/@huggingface/transformers/onnxruntime-web": ["onnxruntime-web@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-web/-/onnxruntime-web-1.22.0-dev.20250409-89f8206ba4.tgz", { "dependencies": { "flatbuffers": "^25.1.24", "guid-typescript": "^1.0.9", "long": "^5.2.3", "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4", "platform": "^1.3.6", "protobufjs": "^7.2.4" } }, "sha512-0uS76OPgH0hWCPrFKlL8kYVV7ckM7t/36HfbgoFw6Nd0CZVVbQC4PkrR8mBX8LtNUFZO25IQBqV2Hx2ho3FlbQ=="],
+
+    "xsai-transformers/@xsai-transformers/embed/@huggingface/transformers/onnxruntime-node": ["onnxruntime-node@1.21.0", "https://registry.npmmirror.com/onnxruntime-node/-/onnxruntime-node-1.21.0.tgz", { "dependencies": { "global-agent": "^3.0.0", "onnxruntime-common": "1.21.0", "tar": "^7.0.1" }, "os": [ "linux", "win32", "darwin", ] }, "sha512-NeaCX6WW2L8cRCSqy3bInlo5ojjQqu2fD3D+9W5qb5irwxhEyWKXeH2vZ8W9r6VxaMPUan+4/7NDwZMtouZxEw=="],
+
+    "xsai-transformers/@xsai-transformers/embed/@huggingface/transformers/onnxruntime-web": ["onnxruntime-web@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-web/-/onnxruntime-web-1.22.0-dev.20250409-89f8206ba4.tgz", { "dependencies": { "flatbuffers": "^25.1.24", "guid-typescript": "^1.0.9", "long": "^5.2.3", "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4", "platform": "^1.3.6", "protobufjs": "^7.2.4" } }, "sha512-0uS76OPgH0hWCPrFKlL8kYVV7ckM7t/36HfbgoFw6Nd0CZVVbQC4PkrR8mBX8LtNUFZO25IQBqV2Hx2ho3FlbQ=="],
+
+    "xsai-transformers/@xsai-transformers/shared/@huggingface/transformers/onnxruntime-node": ["onnxruntime-node@1.21.0", "https://registry.npmmirror.com/onnxruntime-node/-/onnxruntime-node-1.21.0.tgz", { "dependencies": { "global-agent": "^3.0.0", "onnxruntime-common": "1.21.0", "tar": "^7.0.1" }, "os": [ "linux", "win32", "darwin", ] }, "sha512-NeaCX6WW2L8cRCSqy3bInlo5ojjQqu2fD3D+9W5qb5irwxhEyWKXeH2vZ8W9r6VxaMPUan+4/7NDwZMtouZxEw=="],
+
+    "xsai-transformers/@xsai-transformers/shared/@huggingface/transformers/onnxruntime-web": ["onnxruntime-web@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-web/-/onnxruntime-web-1.22.0-dev.20250409-89f8206ba4.tgz", { "dependencies": { "flatbuffers": "^25.1.24", "guid-typescript": "^1.0.9", "long": "^5.2.3", "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4", "platform": "^1.3.6", "protobufjs": "^7.2.4" } }, "sha512-0uS76OPgH0hWCPrFKlL8kYVV7ckM7t/36HfbgoFw6Nd0CZVVbQC4PkrR8mBX8LtNUFZO25IQBqV2Hx2ho3FlbQ=="],
+
+    "xsai-transformers/@xsai-transformers/transcription/@huggingface/transformers/onnxruntime-node": ["onnxruntime-node@1.21.0", "https://registry.npmmirror.com/onnxruntime-node/-/onnxruntime-node-1.21.0.tgz", { "dependencies": { "global-agent": "^3.0.0", "onnxruntime-common": "1.21.0", "tar": "^7.0.1" }, "os": [ "linux", "win32", "darwin", ] }, "sha512-NeaCX6WW2L8cRCSqy3bInlo5ojjQqu2fD3D+9W5qb5irwxhEyWKXeH2vZ8W9r6VxaMPUan+4/7NDwZMtouZxEw=="],
+
+    "xsai-transformers/@xsai-transformers/transcription/@huggingface/transformers/onnxruntime-web": ["onnxruntime-web@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-web/-/onnxruntime-web-1.22.0-dev.20250409-89f8206ba4.tgz", { "dependencies": { "flatbuffers": "^25.1.24", "guid-typescript": "^1.0.9", "long": "^5.2.3", "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4", "platform": "^1.3.6", "protobufjs": "^7.2.4" } }, "sha512-0uS76OPgH0hWCPrFKlL8kYVV7ckM7t/36HfbgoFw6Nd0CZVVbQC4PkrR8mBX8LtNUFZO25IQBqV2Hx2ho3FlbQ=="],
+
     "vite-plugin-vue-inspector/@vue/babel-plugin-jsx/@vue/babel-plugin-resolve-type/@vue/compiler-sfc/@vue/compiler-core": ["@vue/compiler-core@3.5.31", "https://registry.npmmirror.com/@vue/compiler-core/-/compiler-core-3.5.31.tgz", { "dependencies": { "@babel/parser": "^7.29.2", "@vue/shared": "3.5.31", "entities": "^7.0.1", "estree-walker": "^2.0.2", "source-map-js": "^1.2.1" } }, "sha512-k/ueL14aNIEy5Onf0OVzR8kiqF/WThgLdFhxwa4e/KF/0qe38IwIdofoSWBTvvxQOesaz6riAFAUaYjoF9fLLQ=="],
 
     "vite-plugin-vue-inspector/@vue/babel-plugin-jsx/@vue/babel-plugin-resolve-type/@vue/compiler-sfc/@vue/compiler-ssr": ["@vue/compiler-ssr@3.5.31", "https://registry.npmmirror.com/@vue/compiler-ssr/-/compiler-ssr-3.5.31.tgz", { "dependencies": { "@vue/compiler-dom": "3.5.31", "@vue/shared": "3.5.31" } }, "sha512-h0xIMxrt/LHOvJKMri+vdYT92BrK3HFLtDqq9Pr/lVVfE4IyKZKvWf0vJFW10Yr6nX02OR4MkJwI0c1HDa1hog=="],
+
+    "xsai-transformers/@xsai-transformers/chat/@huggingface/transformers/onnxruntime-node/onnxruntime-common": ["onnxruntime-common@1.21.0", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.21.0.tgz", {}, "sha512-Q632iLLrtCAVOTO65dh2+mNbQir/QNTVBG3h/QdZBpns7mZ0RYbLRBgGABPbpU9351AgYy7SJf1WaeVwMrBFPQ=="],
+
+    "xsai-transformers/@xsai-transformers/chat/@huggingface/transformers/onnxruntime-web/onnxruntime-common": ["onnxruntime-common@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.22.0-dev.20250409-89f8206ba4.tgz", {}, "sha512-vDJMkfCfb0b1A836rgHj+ORuZf4B4+cc2bASQtpeoJLueuFc5DuYwjIZUBrSvx/fO5IrLjLz+oTrB3pcGlhovQ=="],
+
+    "xsai-transformers/@xsai-transformers/embed/@huggingface/transformers/onnxruntime-node/onnxruntime-common": ["onnxruntime-common@1.21.0", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.21.0.tgz", {}, "sha512-Q632iLLrtCAVOTO65dh2+mNbQir/QNTVBG3h/QdZBpns7mZ0RYbLRBgGABPbpU9351AgYy7SJf1WaeVwMrBFPQ=="],
+
+    "xsai-transformers/@xsai-transformers/embed/@huggingface/transformers/onnxruntime-web/onnxruntime-common": ["onnxruntime-common@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.22.0-dev.20250409-89f8206ba4.tgz", {}, "sha512-vDJMkfCfb0b1A836rgHj+ORuZf4B4+cc2bASQtpeoJLueuFc5DuYwjIZUBrSvx/fO5IrLjLz+oTrB3pcGlhovQ=="],
+
+    "xsai-transformers/@xsai-transformers/shared/@huggingface/transformers/onnxruntime-node/onnxruntime-common": ["onnxruntime-common@1.21.0", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.21.0.tgz", {}, "sha512-Q632iLLrtCAVOTO65dh2+mNbQir/QNTVBG3h/QdZBpns7mZ0RYbLRBgGABPbpU9351AgYy7SJf1WaeVwMrBFPQ=="],
+
+    "xsai-transformers/@xsai-transformers/shared/@huggingface/transformers/onnxruntime-web/onnxruntime-common": ["onnxruntime-common@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.22.0-dev.20250409-89f8206ba4.tgz", {}, "sha512-vDJMkfCfb0b1A836rgHj+ORuZf4B4+cc2bASQtpeoJLueuFc5DuYwjIZUBrSvx/fO5IrLjLz+oTrB3pcGlhovQ=="],
+
+    "xsai-transformers/@xsai-transformers/transcription/@huggingface/transformers/onnxruntime-node/onnxruntime-common": ["onnxruntime-common@1.21.0", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.21.0.tgz", {}, "sha512-Q632iLLrtCAVOTO65dh2+mNbQir/QNTVBG3h/QdZBpns7mZ0RYbLRBgGABPbpU9351AgYy7SJf1WaeVwMrBFPQ=="],
+
+    "xsai-transformers/@xsai-transformers/transcription/@huggingface/transformers/onnxruntime-web/onnxruntime-common": ["onnxruntime-common@1.22.0-dev.20250409-89f8206ba4", "https://registry.npmmirror.com/onnxruntime-common/-/onnxruntime-common-1.22.0-dev.20250409-89f8206ba4.tgz", {}, "sha512-vDJMkfCfb0b1A836rgHj+ORuZf4B4+cc2bASQtpeoJLueuFc5DuYwjIZUBrSvx/fO5IrLjLz+oTrB3pcGlhovQ=="],
   }
 }

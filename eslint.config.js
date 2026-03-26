@@ -51,4 +51,7 @@ export default antfu({
       },
     ],
   },
+  ignores: [
+    'packages/xsai-transformers',
+  ],
 })
