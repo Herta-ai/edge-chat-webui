@@ -14,7 +14,10 @@ declare namespace CommonType {
    * @property value: The option value
    * @property label: The option label
    */
-  interface Option<K = string, M = string> { value: K, label: M }
+  interface Option<K = string, M = string> {
+    value: K
+    label: M
+  }
 
   type YesOrNo = 'Y' | 'N'
 

@@ -30,9 +30,7 @@ export default defineConfig((configEnv) => {
       BUILD_TIME: JSON.stringify(buildTime),
     },
     server: {
-      host: '0.0.0.0',
-      port: 9527,
-      open: true,
+      host: true,
     },
     preview: {
       port: 9725,

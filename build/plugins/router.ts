@@ -9,7 +9,6 @@ export function setupElegantRouter() {
       blank: 'src/layouts/blank-layout/index.vue',
     },
     routePathTransformer(routeName, routePath) {
-      const key = routeName as RouteKey
       return routePath
     },
     onRouteMetaGen(routeName) {

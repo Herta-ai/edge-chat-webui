@@ -8,6 +8,10 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["./src/*"],
+      "~/*": ["./*"]
+    },
     "types": ["node"],
     "allowImportingTsExtensions": true,
 
@@ -20,11 +24,7 @@
     "verbatimModuleSyntax": true,
     "erasableSyntaxOnly": true,
     "skipLibCheck": true,
-    "noUncheckedSideEffectImports": true,
-    "paths": {
-      "@/*": ["./src/*"],
-      "~/*": ["./*"]
-    }
+    "noUncheckedSideEffectImports": true
   },
   "include": ["vite.config.ts", "uno.config.ts", "src/types/**/*.ts"]
 }

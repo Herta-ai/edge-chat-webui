@@ -242,7 +242,7 @@ const local: I18N.Schema = {
       step2Title: 'Personalize Your Experience',
       step2Desc: 'Choose your preferences.',
       step3Title: 'All Set!',
-      step3Desc: 'You are ready to explore.'
+      step3Desc: 'You are ready to explore.',
     },
     home: {
       branchDesc:

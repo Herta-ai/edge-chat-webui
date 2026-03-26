@@ -8,7 +8,7 @@ import type { Router } from 'vue-router'
  * @param router router instance
  */
 export function createRouteGuard(router: Router) {
-  router.beforeEach(async (to, from) => {
+  router.beforeEach(async (to) => {
     const appStore = useAppStore()
     const routeStore = useRouteStore()
 

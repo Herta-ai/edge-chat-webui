@@ -2,8 +2,10 @@ import process from 'node:process'
 import path from 'node:path'
 import { writeFile } from 'node:fs/promises'
 import { existsSync, mkdirSync } from 'node:fs'
-import { prompt } from 'enquirer'
+import enquirer from 'enquirer'
 import { green, red } from 'kolorist'
+
+const { prompt } = enquirer
 
 interface PromptObject {
   routeName: string

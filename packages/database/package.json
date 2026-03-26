@@ -13,14 +13,21 @@
       ]
     }
   },
+  "scripts": {
+    "test": "vitest",
+    "test:ui": "vitest --ui"
+  },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
-    "@surrealdb/wasm": "^3.0.3",
+    "@surrealdb/wasm": "^2.6.1",
     "surrealdb": "^2.0.3"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@vitest/browser-playwright": "^4.1.1",
+    "@vitest/ui": "4.1.1",
+    "vitest": "^4.1.1"
   }
 }

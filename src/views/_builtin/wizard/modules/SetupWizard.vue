@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { $t } from '@/locales'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 // 移除 EffectFade，引入 EffectCreative
 import { EffectCreative } from 'swiper/modules'
 import { NButton } from 'naive-ui'
+import { $t } from '@/locales'
 
 import { useAppStore } from '@/store/modules/app'
 import { useRouterPush } from '@/hooks/common/router'
@@ -66,11 +66,14 @@ function handleComplete() {
 
 <template>
   <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4 backdrop-blur-sm">
-    <div class="relative h-[600px] max-w-4xl w-full flex flex-col overflow-hidden border border-white/20 rounded-2xl bg-container/80 shadow-2xl backdrop-blur-xl">
+    <div
+      class="relative h-[600px] max-w-4xl w-full flex flex-col overflow-hidden border border-white/20 rounded-2xl bg-container/80 shadow-2xl backdrop-blur-xl"
+    >
       <!-- 进度指示器 -->
       <div class="absolute left-0 right-0 top-6 z-10 flex justify-center gap-2">
         <div
-          v-for="i in 3" :key="i"
+          v-for="i in 3"
+          :key="i"
           class="h-1.5 rounded-full transition-all duration-300"
           :class="activeIndex === i - 1 ? 'w-8 bg-primary' : 'w-4 bg-primary/30'"
         />

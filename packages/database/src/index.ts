@@ -1,8 +1,5 @@
 import { db, setupDB } from './instance'
 
-export {
-  db,
-  setupDB,
-}
+export { db, setupDB }
 
-export * from './modules/document'
+export * as document from './modules/document'

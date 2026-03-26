@@ -1,9 +1,11 @@
 import path from 'node:path'
 import { readFileSync } from 'node:fs'
-import { prompt } from 'enquirer'
+import enquirer from 'enquirer'
 import { execCommand } from '../shared'
 import { locales } from '../locales'
 import type { Lang } from '../locales'
+
+const { prompt } = enquirer
 
 interface PromptObject {
   types: string

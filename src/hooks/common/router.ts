@@ -12,7 +12,6 @@ import type { RouteKey } from '@elegant-router/types'
  */
 export function useRouterPush(inSetup = true) {
   const router = inSetup ? useRouter() : globalRouter
-  const route = globalRouter.currentRoute
 
   const routerPush = router.push
 

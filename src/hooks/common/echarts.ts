@@ -78,7 +78,7 @@ interface ChartHooks {
  * use echarts
  *
  * @param optionsFactory echarts options factory function
- * @param darkMode dark mode
+ * @param hooks ChartHooks
  */
 export function useEcharts<T extends ECOption>(optionsFactory: () => T, hooks: ChartHooks = {}) {
   const scope = effectScope()

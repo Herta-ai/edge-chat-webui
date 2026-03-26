@@ -2,16 +2,16 @@ import { defineConfig, presetWind3, transformerDirectives, transformerVariantGro
 import { presetSoybeanAdmin } from '@sa/uno-preset'
 import { themeVars } from './src/theme/vars'
 
-console.log('theme', {
-  ...themeVars,
-  fontSize: {
-    'icon-xs': '0.875rem',
-    'icon-small': '1rem',
-    'icon': '1.125rem',
-    'icon-large': '1.5rem',
-    'icon-xl': '2rem',
-  },
-})
+// console.log('theme', {
+//   ...themeVars,
+//   fontSize: {
+//     'icon-xs': '0.875rem',
+//     'icon-small': '1rem',
+//     'icon': '1.125rem',
+//     'icon-large': '1.5rem',
+//     'icon-xl': '2rem',
+//   },
+// })
 
 export default defineConfig({
   content: {

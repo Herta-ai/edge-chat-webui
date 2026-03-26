@@ -1,7 +1,6 @@
 declare module 'vue-i18n' {
   // 让 vue-i18n 内部的 Message 类型继承你的 Schema
-  export interface DefineLocaleMessage extends I18N.Schema {
-  }
+  export interface DefineLocaleMessage extends I18N.Schema {}
 }
 
 /**
