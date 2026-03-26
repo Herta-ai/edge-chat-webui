@@ -4,7 +4,6 @@ import { getPaletteColorByNumber, mixColor } from '@sa/color'
 import { useThemeStore } from '@/store/modules/theme'
 import SetupWizard from './modules/SetupWizard.vue'
 
-
 const themeStore = useThemeStore()
 
 const bgThemeColor = computed(() =>

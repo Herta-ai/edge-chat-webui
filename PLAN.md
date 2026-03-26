@@ -11,7 +11,7 @@
 - **前端框架**: Vue 3 (Composition API, `<script setup>`)
 - **状态管理**: Pinia
 - **组件库**: Naive UI
-- **本地存储**: IndexedDB (推荐使用 Dexie.js 或 localforage)
+- **本地存储**: IndexedDB (@surrealdb/wasm)
 - **AI 推理引擎**: Transformers.js (配合 WebGPU & Web Worker)
 - **图表与节点编排**: Vue Flow (适用于拖拉拽 Flow 节点)
 - **协议支持**: MCP (基于 SSE/WebSocket 适配，或者使用支持跨域请求的Streamable HTTP)

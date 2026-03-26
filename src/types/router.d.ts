@@ -9,11 +9,11 @@ declare module 'vue-router' {
      */
     title: string
     /**
-     * I18n key of the route
+     * I18N key of the route
      *
      * It's used in i18n, if it is set, the title will be ignored
      */
-    i18nKey?: App.I18n.I18nKey | null
+    i18nKey?: I18N.I18nKey | null
     /** Whether to cache the route */
     keepAlive?: boolean | null
     /**

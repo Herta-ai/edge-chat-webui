@@ -14,15 +14,15 @@ const emit = defineEmits<Emits>()
 
 interface Props {
   /** Current language */
-  lang: App.I18n.LangType
+  lang: I18N.LangType
   /** Language options */
-  langOptions: App.I18n.LangOption[]
+  langOptions: I18N.LangOption[]
   /** Show tooltip */
   showTooltip?: boolean
 }
 
 interface Emits {
-  (e: 'changeLang', lang: App.I18n.LangType): void
+  (e: 'changeLang', lang: I18N.LangType): void
 }
 
 const tooltipContent = computed(() => {
@@ -44,7 +44,7 @@ const dropdownOptions = computed(() => {
   }))
 })
 
-function changeLang(lang: App.I18n.LangType) {
+function changeLang(lang: I18N.LangType) {
   emit('changeLang', lang)
 }
 </script>

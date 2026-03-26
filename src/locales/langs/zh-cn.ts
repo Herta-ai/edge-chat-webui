@@ -1,4 +1,4 @@
-const local: App.I18n.Schema = {
+const local: I18N.Schema = {
   system: {
     title: 'Soybean 管理系统',
     updateTitle: '系统版本更新通知',

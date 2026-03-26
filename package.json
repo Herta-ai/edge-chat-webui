@@ -31,7 +31,7 @@
     "prepare": "simple-git-hooks",
     "preview": "vite preview",
     "release": "sa release",
-    "typecheck": "vue-tsc --noEmit --skipLibCheck"
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@better-scroll/core": "2.5.1",
@@ -67,7 +67,6 @@
     "@iconify/utils": "^3.1.0",
     "@sa/scripts": "workspace:*",
     "@sa/uno-preset": "workspace:*",
-    "@types/bun": "latest",
     "@types/node": "25.3.5",
     "@types/nprogress": "0.2.3",
     "@unocss/eslint-plugin": "^66.6.7",
@@ -81,7 +80,7 @@
     "oxfmt": "^0.42.0",
     "oxlint": "^1.57.0",
     "sass-embedded": "^1.98.0",
-    "simple-git-hooks": "^2.13.1",
+    "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git#7625657",
     "typescript": "5.9.3",
     "unocss": "^66.6.7",
     "unplugin-icons": "^23.0.1",

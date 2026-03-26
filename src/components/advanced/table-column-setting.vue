@@ -11,7 +11,7 @@ const columns = defineModel<NaiveUI.TableColumnCheck[]>('columns', {
   required: true,
 })
 
-const tooltipRecord: Record<NaiveUI.TableColumnFixed, App.I18n.I18nKey> = {
+const tooltipRecord: Record<NaiveUI.TableColumnFixed, I18N.I18nKey> = {
   left: 'datatable.fixed.right',
   right: 'datatable.fixed.unFixed',
   unFixed: 'datatable.fixed.left',

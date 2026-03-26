@@ -19,14 +19,14 @@ export function setupI18n(app: App) {
   app.use(i18n)
 }
 
-export const $t = i18n.global.t as App.I18n.$T
+export const $t = i18n.global.t as I18N.$T
 
-export function setLocale(locale: App.I18n.LangType) {
+export function setLocale(locale: I18N.LangType) {
   i18n.global.locale.value = locale
 
   document?.querySelector('html')?.setAttribute('lang', locale)
 }
 
-export function getLocale(): App.I18n.LangType {
-  return i18n.global.locale.value as App.I18n.LangType
+export function getLocale(): I18N.LangType {
+  return i18n.global.locale.value as I18N.LangType
 }

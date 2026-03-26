@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
+import { $t } from '@/locales'
 </script>
 
 <template>
@@ -13,10 +11,10 @@ const { t } = useI18n()
       </div>
     </div>
     <h2 class="mb-4 text-2xl text-base-text font-bold">
-      {{ t('page.wizard.step1Title') }}
+      {{ $t('page.wizard.step1Title') }}
     </h2>
     <p class="mb-8 text-base-text opacity-70">
-      {{ t('page.wizard.step1Desc') }}
+      {{ $t('page.wizard.step1Desc') }}
     </p>
 
     <!-- TODO: 第一步的具体表单或设置项 -->

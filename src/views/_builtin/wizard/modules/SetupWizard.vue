@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { $t } from '@/locales'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 // 移除 EffectFade，引入 EffectCreative
 import { EffectCreative } from 'swiper/modules'
@@ -18,7 +18,6 @@ import 'swiper/css/effect-creative'
 
 const appStore = useAppStore()
 const { toHome } = useRouterPush()
-const { t } = useI18n()
 const swiperInstance = ref<any>(null)
 const activeIndex = ref(0)
 
@@ -108,7 +107,7 @@ function handleComplete() {
           class="text-base-text opacity-60 transition-opacity hover:opacity-100"
           @click="handleComplete"
         >
-          {{ t('page.wizard.skip') }}
+          {{ $t('page.wizard.skip') }}
         </NButton>
 
         <div class="flex gap-4">
@@ -118,7 +117,7 @@ function handleComplete() {
             class="border-white/20 text-base-text transition-colors hover:border-primary"
             @click="handlePrev"
           >
-            {{ t('page.wizard.prev') }}
+            {{ $t('page.wizard.prev') }}
           </NButton>
 
           <NButton
@@ -127,7 +126,7 @@ function handleComplete() {
             class="border-none bg-primary px-8 shadow-[var(--tab-box-shadow)] transition-colors hover:bg-primary-400"
             @click="handleNext"
           >
-            {{ activeIndex === 2 ? t('page.wizard.complete') : t('page.wizard.next') }}
+            {{ activeIndex === 2 ? $t('page.wizard.complete') : $t('page.wizard.next') }}
           </NButton>
         </div>
       </div>

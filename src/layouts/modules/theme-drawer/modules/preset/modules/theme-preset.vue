@@ -64,7 +64,7 @@ function getPresetName(preset: ThemePreset): string {
   if (!preset.i18nkey)
     return preset.name
   try {
-    const key = `${preset.i18nkey}.name` as App.I18n.I18nKey
+    const key = `${preset.i18nkey}.name` as I18N.I18nKey
     const translated = $t(key)
     return translated !== key ? translated : preset.name
   }
@@ -77,7 +77,7 @@ function getPresetDesc(preset: ThemePreset): string {
   if (!preset.i18nkey)
     return preset.desc
   try {
-    const key = `${preset.i18nkey}.desc` as App.I18n.I18nKey
+    const key = `${preset.i18nkey}.desc` as I18N.I18nKey
     const translated = $t(key)
     return translated !== key ? translated : preset.desc
   }

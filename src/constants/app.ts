@@ -4,7 +4,7 @@ export const GLOBAL_HEADER_MENU_ID = '__GLOBAL_HEADER_MENU__'
 
 export const GLOBAL_SIDER_MENU_ID = '__GLOBAL_SIDER_MENU__'
 
-export const themeSchemaRecord: Record<UnionKey.ThemeScheme, App.I18n.I18nKey> = {
+export const themeSchemaRecord: Record<UnionKey.ThemeScheme, I18N.I18nKey> = {
   light: 'theme.appearance.themeSchema.light',
   dark: 'theme.appearance.themeSchema.dark',
   auto: 'theme.appearance.themeSchema.auto',
@@ -12,7 +12,7 @@ export const themeSchemaRecord: Record<UnionKey.ThemeScheme, App.I18n.I18nKey> =
 
 export const themeSchemaOptions = transformRecordToOption(themeSchemaRecord)
 
-export const themeLayoutModeRecord: Record<UnionKey.ThemeLayoutMode, App.I18n.I18nKey> = {
+export const themeLayoutModeRecord: Record<UnionKey.ThemeLayoutMode, I18N.I18nKey> = {
   'vertical': 'theme.layout.layoutMode.vertical',
   'vertical-mix': 'theme.layout.layoutMode.vertical-mix',
   'vertical-hybrid-header-first': 'theme.layout.layoutMode.vertical-hybrid-header-first',
@@ -23,14 +23,14 @@ export const themeLayoutModeRecord: Record<UnionKey.ThemeLayoutMode, App.I18n.I1
 
 export const themeLayoutModeOptions = transformRecordToOption(themeLayoutModeRecord)
 
-export const themeScrollModeRecord: Record<UnionKey.ThemeScrollMode, App.I18n.I18nKey> = {
+export const themeScrollModeRecord: Record<UnionKey.ThemeScrollMode, I18N.I18nKey> = {
   wrapper: 'theme.layout.content.scrollMode.wrapper',
   content: 'theme.layout.content.scrollMode.content',
 }
 
 export const themeScrollModeOptions = transformRecordToOption(themeScrollModeRecord)
 
-export const themeTabModeRecord: Record<UnionKey.ThemeTabMode, App.I18n.I18nKey> = {
+export const themeTabModeRecord: Record<UnionKey.ThemeTabMode, I18N.I18nKey> = {
   chrome: 'theme.layout.tab.mode.chrome',
   button: 'theme.layout.tab.mode.button',
   slider: 'theme.layout.tab.mode.slider',
@@ -38,7 +38,7 @@ export const themeTabModeRecord: Record<UnionKey.ThemeTabMode, App.I18n.I18nKey>
 
 export const themeTabModeOptions = transformRecordToOption(themeTabModeRecord)
 
-export const themePageAnimationModeRecord: Record<UnionKey.ThemePageAnimateMode, App.I18n.I18nKey> = {
+export const themePageAnimationModeRecord: Record<UnionKey.ThemePageAnimateMode, I18N.I18nKey> = {
   'fade-slide': 'theme.layout.content.page.mode.fade-slide',
   'fade': 'theme.layout.content.page.mode.fade',
   'fade-bottom': 'theme.layout.content.page.mode.fade-bottom',
