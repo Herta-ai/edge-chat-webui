@@ -17,14 +17,6 @@ declare namespace Env {
     readonly VITE_APP_DESC: string
     /** The router history mode */
     readonly VITE_ROUTER_HISTORY_MODE?: RouterHistoryMode
-    /** The prefix of the iconify icon */
-    readonly VITE_ICON_PREFIX: 'icon'
-    /**
-     * The prefix of the local icon
-     *
-     * This prefix is start with the icon prefix
-     */
-    readonly VITE_ICON_LOCAL_PREFIX: 'icon-local'
     /** backend service base url */
     readonly VITE_SERVICE_BASE_URL: string
     /** when the route mode is static, the defined super role */

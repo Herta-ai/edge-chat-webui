@@ -1,5 +1,5 @@
 {
-  "name": "soybean-admin",
+  "name": "edge-chat-webui",
   "type": "module",
   "version": "2.1.0",
   "description": "构建在浏览器端的下一代 AI 智能体与工作流编排 WebUI",

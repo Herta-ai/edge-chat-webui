@@ -92,7 +92,6 @@ Uses local storage utilities from `@sa/utils`:
 Vite plugins configured in `build/plugins/`:
 
 - `router.ts` - Elegant Router setup
-- `unocss.ts` - UnoCSS configuration
 - `unplugin.ts` - Auto-imports and component resolution
 
 ## Key Directories

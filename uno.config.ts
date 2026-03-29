@@ -1,5 +1,6 @@
-import { defineConfig, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss'
-import { presetSoybeanAdmin } from '@sa/uno-preset'
+import { defineConfig, presetIcons, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { presetEdgeChatWebUI } from '@sa/uno-preset'
+import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 import { themeVars } from './src/theme/vars'
 
 // console.log('theme', {
@@ -12,6 +13,8 @@ import { themeVars } from './src/theme/vars'
 //     'icon-xl': '2rem',
 //   },
 // })
+
+const svgStartRegex = /^<svg\s/
 
 export default defineConfig({
   content: {
@@ -33,5 +36,15 @@ export default defineConfig({
     'card-wrapper': 'rd-8px shadow-sm',
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  presets: [presetWind3({ dark: 'class' }), presetSoybeanAdmin()],
+  presets: [
+    presetWind3({ dark: 'class' }),
+    presetEdgeChatWebUI(),
+    presetIcons({
+      collections: {
+        'i-local': FileSystemIconLoader('src/assets/svg-icon', svg =>
+          svg.replace(svgStartRegex, '<svg width="1em" height="1em" ')),
+      },
+      warn: true,
+    }),
+  ],
 })

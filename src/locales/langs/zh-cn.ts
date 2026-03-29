@@ -1,6 +1,6 @@
 const local: I18N.Schema = {
   system: {
-    title: 'Soybean 管理系统',
+    title: 'EdgeChatWebUI',
     updateTitle: '系统版本更新通知',
     updateContent: '检测到系统有新版本发布，是否立即刷新页面？',
     updateConfirm: '立即刷新',
@@ -226,6 +226,7 @@ const local: I18N.Schema = {
     '500': '服务器错误',
     'iframe-page': '外链页面',
     'home': '首页',
+    'settings': '设置',
   },
   page: {
     wizard: {
@@ -261,10 +262,10 @@ const local: I18N.Schema = {
       projectNews: {
         title: '项目动态',
         moreNews: '更多动态',
-        desc1: 'Soybean 在2021年5月28日创建了开源项目 soybean-admin!',
-        desc2: 'Yanbowe 向 soybean-admin 提交了一个bug，多标签栏不会自适应。',
-        desc3: 'Soybean 准备为 soybean-admin 的发布做充分的准备工作!',
-        desc4: 'Soybean 正在忙于为soybean-admin写项目说明文档！',
+        desc1: 'Soybean 在2021年5月28日创建了开源项目 edge-chat-webui!',
+        desc2: 'Yanbowe 向 edge-chat-webui 提交了一个bug，多标签栏不会自适应。',
+        desc3: 'Soybean 准备为 edge-chat-webui 的发布做充分的准备工作!',
+        desc4: 'Soybean 正在忙于为edge-chat-webui写项目说明文档！',
         desc5: 'Soybean 刚才把工作台页面随便写了一些，凑合能看了！',
       },
       creativity: '创意',

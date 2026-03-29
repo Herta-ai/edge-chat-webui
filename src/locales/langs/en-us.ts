@@ -1,6 +1,6 @@
 const local: I18N.Schema = {
   system: {
-    title: 'SoybeanAdmin',
+    title: 'EdgeChatWebUI',
     updateTitle: 'System Version Update Notification',
     updateContent: 'A new version of the system has been detected. Do you want to refresh the page immediately?',
     updateConfirm: 'Refresh immediately',
@@ -230,6 +230,7 @@ const local: I18N.Schema = {
     '500': 'Server Error',
     'iframe-page': 'Iframe',
     'home': 'Home',
+    'settings': 'Settings',
   },
   page: {
     wizard: {
@@ -265,10 +266,10 @@ const local: I18N.Schema = {
       projectNews: {
         title: 'Project News',
         moreNews: 'More News',
-        desc1: 'Soybean created the open source project soybean-admin on May 28, 2021!',
-        desc2: 'Yanbowe submitted a bug to soybean-admin, the multi-tab bar will not adapt.',
-        desc3: 'Soybean is ready to do sufficient preparation for the release of soybean-admin!',
-        desc4: 'Soybean is busy writing project documentation for soybean-admin!',
+        desc1: 'Soybean created the open source project edge-chat-webui on May 28, 2021!',
+        desc2: 'Yanbowe submitted a bug to edge-chat-webui, the multi-tab bar will not adapt.',
+        desc3: 'Soybean is ready to do sufficient preparation for the release of edge-chat-webui!',
+        desc4: 'Soybean is busy writing project documentation for edge-chat-webui!',
         desc5: 'Soybean just wrote some of the workbench pages casually, and it was enough to see!',
       },
       creativity: 'Creativity',
