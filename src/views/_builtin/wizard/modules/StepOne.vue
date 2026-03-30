@@ -6,9 +6,7 @@ import { $t } from '@/locales'
   <div class="h-full flex flex-col items-center justify-center p-8 text-center">
     <!-- 占位插画或图标 -->
     <div class="mb-8 h-48 w-48 flex items-center justify-center border border-primary/20 rounded-2xl bg-primary-100/30">
-      <div class="text-icon-xl text-primary font-bold">
-        Icon 1
-      </div>
+      <div class="i-noto-v1:artist-palette text-72px text-primary font-bold" />
     </div>
     <h2 class="mb-4 text-2xl text-base-text font-bold">
       {{ $t('page.wizard.step1Title') }}
