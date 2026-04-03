@@ -31,6 +31,7 @@ export default defineConfig((configEnv) => {
     },
     server: {
       host: true,
+      port: 8484,
     },
     preview: {
       port: 9725,

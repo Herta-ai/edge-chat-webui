@@ -41,6 +41,26 @@ export const generatedRoutes: GeneratedRoute[] = [
     }
   },
   {
+    name: 'chat',
+    path: '/chat',
+    component: 'layout.base$view.chat',
+    meta: {
+      title: 'chat',
+      i18nKey: 'route.chat'
+    },
+    children: [
+      {
+        name: 'chat_simple-chat',
+        path: '/chat/simple-chat',
+        component: 'view.chat_simple-chat',
+        meta: {
+          title: 'chat_simple-chat',
+          i18nKey: 'route.chat_simple-chat'
+        }
+      }
+    ]
+  },
+  {
     name: 'home',
     path: '/home',
     component: 'layout.base$view.home',
