@@ -102,7 +102,7 @@ export function useQwen3_5Chat() {
                 }
               }
 
-              const streamer = new CustomStreamer(pipelineIns.value.tokenizer)
+              const streamer = new CustomStreamer(processor.tokenizer)
 
               try {
                 // 5. 执行推理

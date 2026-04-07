@@ -8,6 +8,7 @@ describe('useEmbed test', () => {
   it('should successfully load the model and generate embeddings', async () => {
     env.remoteHost = 'http://127.0.0.1:8080'
     env.remotePathTemplate = '{model}'
+    env.backends.onnx.wasm!.wasmPaths = 'http://127.0.0.1:8080/ort/'
 
     const modelId = 'onnx-community/Qwen3-Embedding-0.6B-ONNX'
     const { embed: transformersEmbed } = useEmbed()
@@ -22,16 +23,17 @@ describe('useEmbed test', () => {
       input: 'Hello, world!',
     })
 
-    console.log('embedded result', result)
-
     // ----------------------------------------
     // Step 3: 断言结果
     // ----------------------------------------
-    expect(result).toBeDefined()
     expect(result.embedding).toBeDefined()
-
-    // 验证 embedding 是一个数组 (通常返回的是多维数组或一维数字数组)
-    expect(result.embedding.length).toBeGreaterThan(0)
+    expect(result.embedding.length).toBe(1024)
+    expect(result.usage).toMatchInlineSnapshot(`
+      {
+        "prompt_tokens": 5,
+        "total_tokens": 5,
+      }
+    `)
 
     // 这里做基础的类型检查，确保返回了有效的数字向量
     const firstEmbedding = result.embedding[0]
