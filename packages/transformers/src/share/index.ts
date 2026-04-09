@@ -1,10 +1,11 @@
 import { computed, reactive, ref, shallowRef } from 'vue'
 import { pipeline } from '@huggingface/transformers'
 import type { PipelineType, PretrainedModelOptions } from '@huggingface/transformers'
+import type { TStatus } from '../types.ts'
 
 export function useShare({ task }: { task: PipelineType }) {
   // === 状态管理 ===
-  const status = ref<'idle' | 'loading_model' | 'ready' | 'model_running' | 'error'>('idle')
+  const status = ref<TStatus>('idle')
   const currentModelId = ref<string | null>(null)
   const error = ref<Error | null>(null)
 

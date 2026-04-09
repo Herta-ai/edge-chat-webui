@@ -10,46 +10,33 @@ describe('useStreamText test', () => {
   env.backends.onnx.wasm!.wasmPaths = 'http://127.0.0.1:8080/ort/'
 
   it('common text generate pipeline', async () => {
-    const modelId = 'onnx-community/Qwen3-0.6B-ONNX'
     const { streamText: transformersStreamText } = useStreamText()
 
-    // ----------------------------------------
-    // 测试向量生成 (embed)
-    // ----------------------------------------
-    const { textStream, usage, totalUsage } = streamText({
-      ...transformersStreamText(modelId, {
+    const { textStream, usage } = streamText({
+      ...transformersStreamText({
         device: 'webgpu',
-        dtype: 'q4',
+        dtype: 'q4f16',
       }),
       messages: [
         { role: 'system', content: 'You are a helpful assistant.' },
         { role: 'user', content: 'What is the capital of France?' },
       ],
+      model: 'HuggingFaceTB/SmolLM2-135M-Instruct',
     })
 
     const text: string[] = []
     for await (const textPart of textStream) {
-      console.log(textPart)
       text.push(textPart)
     }
 
-    console.log('usage', await usage)
-    console.log('totalUsage', await totalUsage)
-
-    // ----------------------------------------
-    // Step 3: 断言结果
-    // ----------------------------------------
     expect(Array.isArray(text)).toBe(true)
+    expect(await usage).toBeDefined()
   }, 600000) // 显式声明 600s 超时时间
   it('qwen3.5', async () => {
-    const modelId = 'huggingworld/Qwen3.5-0.8B-ONNX'
     const { streamText: transformersStreamText } = useQwen3_5Chat()
 
-    // ----------------------------------------
-    // 测试向量生成 (embed)
-    // ----------------------------------------
     const { textStream, usage } = streamText({
-      ...transformersStreamText(modelId, {
+      ...transformersStreamText({
         device: 'webgpu',
         dtype: {
           embed_tokens: 'q4',
@@ -61,6 +48,7 @@ describe('useStreamText test', () => {
         { role: 'system', content: 'You are a helpful assistant.' },
         { role: 'user', content: 'What is the capital of France?' },
       ],
+      model: 'onnx-community/Qwen3.5-0.8B-ONNX',
     })
 
     const text: string[] = []
@@ -68,9 +56,7 @@ describe('useStreamText test', () => {
       text.push(textPart)
     }
 
-    // ----------------------------------------
-    // Step 3: 断言结果
-    // ----------------------------------------
     expect(Array.isArray(text)).toBe(true)
+    expect(usage).toBeDefined()
   }, 600000) // 显式声明 600s 超时时间
 })

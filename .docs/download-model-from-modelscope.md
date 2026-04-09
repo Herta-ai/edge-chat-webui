@@ -46,13 +46,13 @@ const model = await Qwen3_5ForConditionalGeneration.from_pretrained(model_id, {
 ```
 
 ```shell
-modelscope download --model onnx-community/Qwen3.5-0.8B-ONNX --local_dir ./Qwen3.5-0.8B-ONNX config.json configuration.json generation_config.json preprocessor_config.json processor_config.json tokenizer.json tokenizer_config.json onnx/decoder_model_merged_q4.onnx_data onnx/decoder_model_merged_q4.onnx_data_1 onnx/embed_tokens_q4.onnx onnx/embed_tokens_q4.onnx_data onnx/decoder_model_merged_q4.onnx onnx/vision_encoder_fp16.onnx onnx/vision_encoder_fp16.onnx_data
+modelscope download --model onnx-community/Qwen3.5-0.8B-ONNX --local_dir ./onnx-community/Qwen3.5-0.8B-ONNX config.json configuration.json generation_config.json preprocessor_config.json processor_config.json tokenizer.json tokenizer_config.json onnx/decoder_model_merged_q4.onnx_data onnx/decoder_model_merged_q4.onnx_data_1 onnx/embed_tokens_q4.onnx onnx/embed_tokens_q4.onnx_data onnx/decoder_model_merged_q4.onnx onnx/vision_encoder_fp16.onnx onnx/vision_encoder_fp16.onnx_data
 ```
 
 ```shell
-modelscope download --model onnx-community/Qwen3.5-2B-ONNX --local_dir ./Qwen3.5-2B-ONNX config.json configuration.json generation_config.json preprocessor_config.json processor_config.json tokenizer.json tokenizer_config.json onnx/decoder_model_merged_q4.onnx_data onnx/decoder_model_merged_q4.onnx_data_1 onnx/embed_tokens_q4.onnx onnx/embed_tokens_q4.onnx_data onnx/decoder_model_merged_q4.onnx onnx/vision_encoder_fp16.onnx onnx/vision_encoder_fp16.onnx_data
+modelscope download --model onnx-community/Qwen3.5-2B-ONNX --local_dir ./onnx-community/Qwen3.5-2B-ONNX config.json configuration.json generation_config.json preprocessor_config.json processor_config.json tokenizer.json tokenizer_config.json onnx/decoder_model_merged_q4.onnx_data onnx/decoder_model_merged_q4.onnx_data_1 onnx/embed_tokens_q4.onnx onnx/embed_tokens_q4.onnx_data onnx/decoder_model_merged_q4.onnx onnx/vision_encoder_fp16.onnx onnx/vision_encoder_fp16.onnx_data
 ```
 
 ```shell
-modelscope download --model onnx-community/Qwen3.5-4B-ONNX --local_dir ./Qwen3.5-4B-ONNX config.json configuration.json generation_config.json preprocessor_config.json processor_config.json tokenizer.json tokenizer_config.json onnx/decoder_model_merged_q4.onnx_data onnx/decoder_model_merged_q4.onnx_data_1 onnx/embed_tokens_q4.onnx onnx/embed_tokens_q4.onnx_data onnx/decoder_model_merged_q4.onnx onnx/vision_encoder_fp16.onnx onnx/vision_encoder_fp16.onnx_data
+modelscope download --model onnx-community/Qwen3.5-4B-ONNX --local_dir ./onnx-community/Qwen3.5-4B-ONNX config.json configuration.json generation_config.json preprocessor_config.json processor_config.json tokenizer.json tokenizer_config.json onnx/decoder_model_merged_q4.onnx_data onnx/decoder_model_merged_q4.onnx_data_1 onnx/embed_tokens_q4.onnx onnx/embed_tokens_q4.onnx_data onnx/decoder_model_merged_q4.onnx onnx/vision_encoder_fp16.onnx onnx/vision_encoder_fp16.onnx_data
 ```

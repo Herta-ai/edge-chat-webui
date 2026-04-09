@@ -18,7 +18,8 @@ describe('useEmbed test', () => {
     // ----------------------------------------
     const result = await embed({
       ...transformersEmbed(modelId, {
-        dtype: 'q4',
+        dtype: 'q4f16',
+        device: 'webgpu',
       }),
       input: 'Hello, world!',
     })
