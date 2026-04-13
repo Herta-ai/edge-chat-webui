@@ -20,7 +20,7 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@huggingface/transformers": "^4.0.0-next.9",
+    "@huggingface/transformers": "^4.0.1",
     "@vitest/browser-playwright": "catalog:",
     "@vitest/ui": "catalog:",
     "@xsai-ext/shared-providers": "catalog:",

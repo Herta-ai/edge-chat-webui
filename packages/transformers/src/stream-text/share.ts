@@ -4,26 +4,28 @@ import type { Ref } from 'vue'
 import type { TStatus } from '../types.ts'
 
 export function commonFetch({
-  getTokenizer,
-  generateFn,
-  tokenizeFn,
+  error,
   status,
   loadModelOptions,
+  getTokenizer,
   loadModel,
-  error,
+  prepareInputFn,
+  generateFn,
+  textStreamerOption = {},
 }: {
   error: Ref<Error | null>
   status: Ref<TStatus>
-  getTokenizer: () => any
-  generateFn: (...args: any) => Promise<void>
-  loadModel: (modelId: string, options?: PretrainedModelOptions) => Promise<void>
   loadModelOptions?: PretrainedModelOptions
-  tokenizeFn: (messages: any) => Promise<any>
+  getTokenizer: () => any
+  loadModel: (modelId: string, options?: PretrainedModelOptions) => Promise<void>
+  prepareInputFn: (messages: any, prepareOptions: any) => Promise<any>
+  generateFn: (...args: any) => Promise<void>
+  textStreamerOption?: any
 }) {
   return async (_url: string, fetchOptions: RequestInit): Promise<Response> => {
     try {
       // 1. 解析请求 body 中的 messages
-      const { messages = [], model, ...extBodyOptions } = JSON.parse(fetchOptions.body as string)
+      const { messages = [], model, enable_thinking, prepareOptions = {}, ...extBodyOptions } = JSON.parse(fetchOptions.body as string)
 
       // 2. 确保模型已经加载
       await loadModel(model, loadModelOptions)
@@ -31,10 +33,10 @@ export function commonFetch({
 
       const tokenizer = getTokenizer()
 
-      // 3. 使用 tokenizer 的 chat template 格式化对话历史为字符串 Prompt
-      const input = await tokenizeFn(messages)
-      const prompt = tokenizer.apply_chat_template(messages, {
-        add_generation_prompt: true,
+      // 3. 将对话信息转换成调用模型入参
+      const input = await prepareInputFn(messages, {
+        ...prepareOptions,
+        enable_thinking,
       })
 
       // 4. 创建 ReadableStream 以支持 SSE 流式输出
@@ -43,7 +45,7 @@ export function commonFetch({
           const encoder = new TextEncoder()
 
           // 用于记录当前是否在推理，以及累计完整生成的文本供最后计算 usage
-          let isReasoning = false
+          let isReasoning = !!enable_thinking
           let fullGeneratedText = ''
           let fullReasoningText = ''
 
@@ -67,12 +69,24 @@ export function commonFetch({
             controller.enqueue(encoder.encode(`data: ${JSON.stringify(chunk)}\n\n`))
           }
 
+          // action 类型: 'start_reasoning' (进入思考) | 'end_reasoning' (结束思考) | 'drop' (消除不显示)
+          const ALL_TAGS = [
+            { tag: '<think>', action: 'start_reasoning' },
+            { tag: '<|channel>', action: 'start_reasoning' }, // Gemma4 开始思考
+            { tag: '</think>', action: 'end_reasoning' },
+            { tag: '<channel|>', action: 'end_reasoning' }, // Gemma4 结束思考
+            { tag: '<turn|>', action: 'drop' }, // 遇到后直接消除
+          ]
+
           // 继承 TextStreamer 拦截输出，防止打印到控制台，转而推送到 Stream 中
           class CustomStreamer extends TextStreamer {
             constructor(tokenizer: any) {
               // skip_prompt: true 确保只输出 AI 生成的回复，不包含我们发送的 Prompt
-              console.log(tokenizer)
-              super(tokenizer, { skip_prompt: true })
+              super(tokenizer, {
+                skip_prompt: true,
+                skip_special_tokens: true,
+                ...textStreamerOption,
+              })
             }
 
             // 每次解码出完整的有效字符时触发
@@ -80,39 +94,49 @@ export function commonFetch({
             override on_finalized_text(text: string) {
               if (!text)
                 return
-              fullGeneratedText += text // 收集完整的 AI 输出
+              fullGeneratedText += text
 
               let remainingText = text
 
-              // 简单的状态机解析 <think> 标签
               while (remainingText.length > 0) {
-                if (!isReasoning) {
-                  const thinkStart = remainingText.indexOf('<think>')
-                  if (thinkStart !== -1) {
-                    const before = remainingText.slice(0, thinkStart)
-                    if (before)
-                      sendChunk(before, 'content')
-                    isReasoning = true
-                    remainingText = remainingText.slice(thinkStart + 7) // 截断 '<think>'
-                  }
-                  else {
-                    sendChunk(remainingText, 'content')
-                    break
+                let minIndex = -1
+                let matchedRule = null
+
+                // 始终遍历【所有】标签，寻找最先出现的一个
+                for (const rule of ALL_TAGS) {
+                  const index = remainingText.indexOf(rule.tag)
+                  // 寻找最早出现的标签
+                  if (index !== -1 && (minIndex === -1 || index < minIndex)) {
+                    minIndex = index
+                    matchedRule = rule
                   }
                 }
+
+                // 如果匹配到了任何标签
+                if (minIndex !== -1 && matchedRule) {
+                  // 1. 发送标签前面的内容（按当前的 isReasoning 状态决定身份）
+                  const before = remainingText.slice(0, minIndex)
+                  if (before) {
+                    sendChunk(before, isReasoning ? 'reasoning' : 'content')
+                  }
+
+                  // 2. 根据标签配置的动作，更新状态 (具备自纠错能力)
+                  if (matchedRule.action === 'start_reasoning') {
+                    isReasoning = true // 即使已经是 true，再次赋值也无妨
+                  }
+                  else if (matchedRule.action === 'end_reasoning') {
+                    isReasoning = false // 即使已经是 false，再次赋值也无妨
+                  }
+                  // 'drop' 动作不改变 isReasoning 状态
+
+                  // 3. 截断掉已处理的内容及该标签本体，继续循环处理剩余字符串
+                  remainingText = remainingText.slice(minIndex + matchedRule.tag.length)
+                }
+                // 如果没有任何匹配的标签
                 else {
-                  const thinkEnd = remainingText.indexOf('</think>')
-                  if (thinkEnd !== -1) {
-                    const before = remainingText.slice(0, thinkEnd)
-                    if (before)
-                      sendChunk(before, 'reasoning')
-                    isReasoning = false
-                    remainingText = remainingText.slice(thinkEnd + 8) // 截断 '</think>'
-                  }
-                  else {
-                    sendChunk(remainingText, 'reasoning')
-                    break
-                  }
+                  // 剩下的所有字符都是安全的，直接发送
+                  sendChunk(remainingText, isReasoning ? 'reasoning' : 'content')
+                  break
                 }
               }
             }
@@ -124,7 +148,7 @@ export function commonFetch({
             // 5. 执行推理
             await generateFn(input, {
               ...extBodyOptions,
-              streamer, // 传入我们自定义的流式拦截器
+              streamer,
             })
 
             // 新增：6. 推理结束，计算 Usage
@@ -167,6 +191,7 @@ export function commonFetch({
             status.value = 'ready'
           }
           catch (err) {
+            console.error('error', error)
             controller.error(err)
             status.value = 'error'
           }

@@ -3,7 +3,7 @@ import { pipeline } from '@huggingface/transformers'
 import type { PipelineType, PretrainedModelOptions } from '@huggingface/transformers'
 import type { TStatus } from '../types.ts'
 
-export function useShare({ task }: { task: PipelineType }) {
+export function useShare({ task, loadModelFn }: { task?: PipelineType, loadModelFn?: (modelId: string, options?: PretrainedModelOptions) => Promise<void> }) {
   // === 状态管理 ===
   const status = ref<TStatus>('idle')
   const currentModelId = ref<string | null>(null)
@@ -45,19 +45,26 @@ export function useShare({ task }: { task: PipelineType }) {
     pipelineIns.value = null
 
     try {
-      // 加载 feature-extraction 管道
-      pipelineIns.value = await pipeline(task, modelId, {
-        ...options,
-        progress_callback: (info: any) => {
-          if (info.status === 'progress') {
-            // 记录每个文件的下载进度
-            downloadFiles.set(info.file, { loaded: info.loaded, total: info.total })
-          }
-          else if (info.status === 'done') {
-            downloadFiles.set(info.file, { loaded: info.total, total: info.total })
-          }
-        },
-      })
+      if (task) {
+        pipelineIns.value = await pipeline(task, modelId, {
+          ...options,
+          progress_callback: (info: any) => {
+            if (info.status === 'progress') {
+              // 记录每个文件的下载进度
+              downloadFiles.set(info.file, { loaded: info.loaded, total: info.total })
+            }
+            else if (info.status === 'done') {
+              downloadFiles.set(info.file, { loaded: info.total, total: info.total })
+            }
+          },
+        })
+      }
+      else if (loadModelFn) {
+        await loadModelFn(modelId, options)
+      }
+      else {
+        throw new Error('Unable to load model')
+      }
       status.value = 'ready'
       return pipelineIns.value
     }

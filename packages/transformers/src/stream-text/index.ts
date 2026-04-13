@@ -17,7 +17,7 @@ export function useStreamText() {
         loadModelOptions: options,
         getTokenizer: () => pipelineIns.value.tokenizer,
         generateFn: (input, options) => pipelineIns.value(input, options),
-        tokenizeFn: messages => pipelineIns.value.tokenizer.apply_chat_template(messages, {
+        prepareInputFn: messages => pipelineIns.value.tokenizer.apply_chat_template(messages, {
           tokenize: false,
           add_generation_prompt: true,
         }),
@@ -34,3 +34,6 @@ export function useStreamText() {
     error,
   }
 }
+
+export { useGemma4Chat } from './use-gemma4-chat.ts'
+export { useQwen3_5Chat } from './use-qwen3_5-chat.ts'
