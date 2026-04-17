@@ -17,10 +17,15 @@ export function useStreamText() {
         loadModelOptions: options,
         getTokenizer: () => pipelineIns.value.tokenizer,
         generateFn: (input, options) => pipelineIns.value(input, options),
-        prepareInputFn: messages => pipelineIns.value.tokenizer.apply_chat_template(messages, {
-          tokenize: false,
-          add_generation_prompt: true,
-        }),
+        prepareInputFn: async (messages) => {
+          const tokenizer = (pipelineIns.value as any).tokenizer
+          // Pipeline 通常直接吃 string 或者数组，我们需要把它提炼出来计算 token
+          const promptStr = tokenizer.apply_chat_template(messages, {
+            tokenize: false,
+            add_generation_prompt: true,
+          })
+          return { input: messages, promptStr }
+        },
       }),
     } as unknown as CommonRequestOptions
   }

@@ -22,7 +22,7 @@ export default antfu({
   rules: {
     'ts/ban-ts-comment': 'off',
     'no-console': 'warn',
-    'e18e/prefer-static-regex': 'warn',
+    'e18e/prefer-static-regex': 'off',
     'eslint-comments/no-unlimited-disable': 'warn',
     // 禁用 perfectionist/sort-imports 规则
     'perfectionist/sort-imports': 'off',

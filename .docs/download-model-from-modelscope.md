@@ -56,3 +56,7 @@ modelscope download --model onnx-community/Qwen3.5-2B-ONNX --local_dir ./onnx-co
 ```shell
 modelscope download --model onnx-community/Qwen3.5-4B-ONNX --local_dir ./onnx-community/Qwen3.5-4B-ONNX config.json configuration.json generation_config.json preprocessor_config.json processor_config.json tokenizer.json tokenizer_config.json onnx/decoder_model_merged_q4.onnx_data onnx/decoder_model_merged_q4.onnx_data_1 onnx/embed_tokens_q4.onnx onnx/embed_tokens_q4.onnx_data onnx/decoder_model_merged_q4.onnx onnx/vision_encoder_fp16.onnx onnx/vision_encoder_fp16.onnx_data
 ```
+
+```shell
+modelscope download --model HuggingFaceTB/SmolLM2-135M-Instruct --local_dir ./HuggingFaceTB/SmolLM2-135M-Instruct all_results.json config.json eval_results.json generation_config.json special_tokens_map.json tokenizer.json tokenizer_config.json train_results.json trainer_state.json vocab.json onnx/model_q4f16.onnx
+```
