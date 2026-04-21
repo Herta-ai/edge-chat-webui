@@ -20,6 +20,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@ecw/types": "workspace:*",
     "@huggingface/transformers": "^4.0.1",
     "@vitest/browser-playwright": "catalog:",
     "@vitest/ui": "catalog:",
@@ -35,6 +36,7 @@
     "@xsai/shared": "catalog:",
     "@xsai/shared-chat": "catalog:",
     "@xsai/stream-text": "catalog:",
+    "consola": "catalog:",
     "vitest": "catalog:",
     "xsai-transformers": "workspace:*"
   },

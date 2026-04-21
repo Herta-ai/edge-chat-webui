@@ -1,11 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import { streamText } from '@xsai/stream-text'
 import { env } from '@huggingface/transformers'
-import { useGemma4Chat, useQwen3_5Chat, useStreamText } from '../src/stream-text'
-import type { FunctionCallChunk } from '../src/types.ts'
+import { consola } from 'consola/browser'
+import { BLANK_PARSER_CONFIG, GEMMA_PARSER_CONFIG, QWEN_PARSER_CONFIG, useGemma4Chat, useQwen3_5Chat, useStreamText } from '../src/stream-text'
+import type { ToolCallChunk } from '../src/types.ts'
 import type { Tool } from '@xsai/shared-chat'
 
 describe('useStreamText test', () => {
+  consola.level = 4
   env.remoteHost = 'http://127.0.0.1:8080'
   env.remotePathTemplate = '{model}'
   env.backends.onnx.wasm!.wasmPaths = 'http://127.0.0.1:8080/ort/'
@@ -38,16 +40,18 @@ describe('useStreamText test', () => {
       ...transformersStreamText({
         device: 'webgpu',
         dtype: 'q4f16',
-      }),
+      }, BLANK_PARSER_CONFIG),
       messages: [
         { role: 'system', content: 'You are a helpful assistant.' },
         { role: 'user', content: 'What is the capital of France?' },
       ],
+      max_new_tokens: 1024,
       model: 'HuggingFaceTB/SmolLM2-135M-Instruct',
     })
 
     const text: string[] = []
     for await (const textPart of textStream) {
+      consola.log(textPart)
       text.push(textPart)
     }
 
@@ -65,7 +69,7 @@ describe('useStreamText test', () => {
           vision_encoder: 'fp16',
           decoder_model_merged: 'q4',
         },
-      }),
+      }, QWEN_PARSER_CONFIG),
       messages: [
         { role: 'user', content: 'What is the capital of France?' },
       ],
@@ -81,7 +85,7 @@ describe('useStreamText test', () => {
     const reasoningText: string[] = []
     const text: string[] = []
     for await (const textPart of fullStream) {
-      console.log(textPart)
+      consola.log(textPart)
       if (textPart.type === 'text-delta' && textPart.text) {
         text.push(textPart.text)
       }
@@ -105,7 +109,7 @@ describe('useStreamText test', () => {
           vision_encoder: 'fp16',
           decoder_model_merged: 'q4',
         },
-      }),
+      }, QWEN_PARSER_CONFIG),
       messages: [
         { role: 'user', content: '北京的天气怎么样?' },
       ],
@@ -118,8 +122,9 @@ describe('useStreamText test', () => {
 
     const reasoningText: string[] = []
     const text: string[] = []
-    let toolCall: FunctionCallChunk | null = null
+    let toolCall: ToolCallChunk | null = null
     for await (const textPart of fullStream) {
+      consola.log(textPart)
       if (textPart.type === 'text-delta' && textPart.text) {
         text.push(textPart.text)
       }
@@ -128,12 +133,15 @@ describe('useStreamText test', () => {
       }
       else if (textPart.type === 'tool-call') {
         toolCall = {
-          name: textPart.toolName,
-          arguments: JSON.parse(textPart.args),
+          index: 0,
+          function: {
+            name: textPart.toolName,
+            arguments: JSON.parse(textPart.args),
+          },
         }
       }
     }
-    expect(toolCall).toStrictEqual({ name: 'get_current_weather', arguments: { location: '北京' } })
+    expect(toolCall?.function).toStrictEqual({ name: 'get_current_weather', arguments: { location: '北京' } })
     expect(reasoningText.length).toBeGreaterThan(0)
     expect(text.length).toBeGreaterThan(0)
     expect(usage).toBeDefined()
@@ -145,19 +153,19 @@ describe('useStreamText test', () => {
       ...transformersStreamText({
         device: 'webgpu',
         dtype: 'q4f16',
-      }),
+      }, GEMMA_PARSER_CONFIG),
       messages: [
         { role: 'user', content: 'What is the capital of France?' },
       ],
       model: 'onnx-community/gemma-4-E2B-it-ONNX',
-      enable_thinking: false,
+      enable_thinking: true,
       max_new_tokens: 1024,
     })
 
     const reasoningText: string[] = []
     const text: string[] = []
     for await (const textPart of fullStream) {
-      console.log(textPart)
+      consola.log(textPart)
       if (textPart.type === 'text-delta' && textPart.text) {
         text.push(textPart.text)
       }
@@ -177,7 +185,7 @@ describe('useStreamText test', () => {
       ...transformersStreamText({
         device: 'webgpu',
         dtype: 'q4f16',
-      }),
+      }, GEMMA_PARSER_CONFIG),
       messages: [
         { role: 'user', content: '北京的天气怎么样?' },
       ],
@@ -189,8 +197,9 @@ describe('useStreamText test', () => {
 
     const reasoningText: string[] = []
     const text: string[] = []
-    let toolCall: FunctionCallChunk | null = null
+    let toolCall: ToolCallChunk | null = null
     for await (const textPart of fullStream) {
+      consola.log(textPart)
       if (textPart.type === 'text-delta' && textPart.text) {
         text.push(textPart.text)
       }
@@ -199,12 +208,15 @@ describe('useStreamText test', () => {
       }
       else if (textPart.type === 'tool-call') {
         toolCall = {
-          name: textPart.toolName,
-          arguments: JSON.parse(textPart.args),
+          index: 0,
+          function: {
+            name: textPart.toolName,
+            arguments: JSON.parse(textPart.args),
+          },
         }
       }
     }
-    expect(toolCall).toStrictEqual({ name: 'get_current_weather', arguments: { location: '北京' } })
+    expect(toolCall?.function).toStrictEqual({ name: 'get_current_weather', arguments: { location: '北京' } })
     expect(reasoningText.length).toBeGreaterThan(0)
     expect(text.length).toBeGreaterThan(0)
     expect(usage).toBeDefined()

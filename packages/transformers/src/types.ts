@@ -1,4 +1,5 @@
 import type { PretrainedModelOptions, ProgressInfo } from '@huggingface/transformers'
+import type { MessageRole, Usage } from '@ecw/types/llm'
 
 export type TStatus = 'idle' | 'loading_model' | 'ready' | 'model_running' | 'error'
 
@@ -13,19 +14,12 @@ export interface ToolCallChunk {
   }
 }
 
-// 兼容旧版的 Function Call (已被 tool_calls 替代，但部分旧模型或旧 API 还在用)
-export interface FunctionCallChunk {
-  name?: string
-  arguments?: string
-}
-
 // Delta 内容
 export interface Delta {
-  role?: 'system' | 'user' | 'assistant' | 'tool' // 通常只在流的第一个 chunk 中返回
+  role?: MessageRole // 通常只在流的第一个 chunk 中返回
   content?: string | null
   reasoning_content?: string | null // 兼容 DeepSeek / OpenAI o1 等推理模型
   tool_calls?: ToolCallChunk[] // 补充：新的工具调用字段
-  function_call?: FunctionCallChunk // 补充：旧版函数调用字段（建议标记为 deprecated）
 }
 
 // Choice 内容
@@ -37,19 +31,7 @@ export interface ChunkChoice {
   // 'stop' 表示正常输出结束
   // 'tool_calls' 表示接下来需要客户端去执行函数
   // 'length' 表示达到最大 token 限制
-  finish_reason: 'stop' | 'length' | 'tool_calls' | 'content_filter' | 'function_call' | null
-}
-
-// 用量统计 (仅在流的最后一个 chunk 中通过 stream_options: { include_usage: true } 返回)
-export interface Usage {
-  prompt_tokens: number
-  completion_tokens: number
-  total_tokens: number
-  completion_tokens_details?: {
-    reasoning_tokens: number
-    accepted_prediction_tokens?: number
-    rejected_prediction_tokens?: number
-  }
+  finish_reason: 'stop' | 'length' | 'tool_calls' | 'content_filter' | null
 }
 
 // 根对象

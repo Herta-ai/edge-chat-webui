@@ -94,7 +94,6 @@
   "catalog": {
     "@vitest/browser-playwright": "^4.1.1",
     "@vitest/ui": "^4.1.1",
-    "vitest": "^4.1.1",
     "@xsai-ext/providers-cloud": "^0.4.0-beta.9",
     "@xsai-ext/providers-local": "^0.4.0-beta.9",
     "@xsai-ext/shared-providers": "^0.4.0-beta.9",
@@ -110,6 +109,8 @@
     "@xsai/stream-text": "0.4.0-beta.4",
     "@xsai/tool": "^0.4.0-beta.9",
     "@xsai/utils-chat": "^0.4.0-beta.9",
+    "consola": "^3.4.2",
+    "vitest": "^4.1.1",
     "xsai": "^0.4.0-beta.9",
     "xsschema": "^0.4.0-beta.9"
   },
