@@ -14,13 +14,13 @@
     }
   },
   "scripts": {
-    "test": "vitest",
-    "test:ui": "vitest --ui"
+    "test:web": "vitest --ui"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
+    "@ecw/types": "workspace:*",
     "@surrealdb/wasm": "^2.6.1",
     "surrealdb": "^2.0.3"
   },

@@ -74,7 +74,7 @@ export async function updateOne(
   const { id, ...rest } = value
 
   // 使用 merge 只更新传入的字段
-  return await db.update<Database.Document.IDocumentRecord>(id).content({
+  return db.update<Database.Document.IDocumentRecord>(id).content({
     ...rest,
     updatedAt: new Date(),
   })
