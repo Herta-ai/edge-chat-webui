@@ -1,4 +1,0 @@
-[submodule "xsai-transformers"]
-	path = xsai-transformers
-	url = https://github.com/Herta-ai/xsai-transformers.git
-	branch = dev
