@@ -167,6 +167,7 @@ const routeMap: RouteMap = {
   "404": "/404",
   "500": "/500",
   "chat": "/chat",
+  "chat_base-chat": "/chat/base-chat",
   "home": "/home",
   "iframe-page": "/iframe-page/:url",
   "settings": "/settings",

@@ -21,6 +21,7 @@ declare module "@elegant-router/types" {
     "404": "/404";
     "500": "/500";
     "chat": "/chat";
+    "chat_base-chat": "/chat/base-chat";
     "home": "/home";
     "iframe-page": "/iframe-page/:url";
     "settings": "/settings";
@@ -85,7 +86,7 @@ declare module "@elegant-router/types" {
     | "500"
     | "iframe-page"
     | "wizard"
-    | "chat"
+    | "chat_base-chat"
     | "home"
     | "settings"
   >;

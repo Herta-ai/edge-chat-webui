@@ -22,6 +22,7 @@ const local: I18N.Schema = {
     confirm: 'Confirm',
     delete: 'Delete',
     deleteSuccess: 'Delete Success',
+    deselect: 'Deselect',
     confirmDelete: 'Are you sure you want to delete?',
     edit: 'Edit',
     warning: 'Warning',
@@ -49,6 +50,7 @@ const local: I18N.Schema = {
       yes: 'Yes',
       no: 'No',
     },
+    newFolder: 'New Folder',
   },
   request: {
     logout: 'Logout user after request failed',
@@ -231,6 +233,8 @@ const local: I18N.Schema = {
     'iframe-page': 'Iframe',
     'home': 'Home',
     'settings': 'Settings',
+    'chat': 'Chat',
+    'chat_base-chat': 'Base Chat',
   },
   page: {
     wizard: {
@@ -244,6 +248,10 @@ const local: I18N.Schema = {
       step2Desc: 'Choose your preferences.',
       step3Title: 'All Set!',
       step3Desc: 'You are ready to explore.',
+    },
+    chat: {
+      chatHistory: 'Chat History',
+      searchHistory: 'Search History',
     },
     home: {
       branchDesc:

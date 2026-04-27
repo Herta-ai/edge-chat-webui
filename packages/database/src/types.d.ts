@@ -43,30 +43,38 @@ declare namespace Database {
       createdAt: Date
       updatedAt: Date
     }
-    interface IMultiContent {
-      type: 'text' | 'image' | 'audio' | 'tool_call'
-      content?: string
+    type TMessageContent = {
+      type: 'text'
+      text: string
+    } | {
+      type: 'tool_call'
       function?: {
         name: string
         arguments: string
       }
+    } | {
+      type: 'file'
+      fileType: 'image' | 'audio'
+      base64: string
+      fileIdentifier: string
+      sizeBytes: number
     }
     interface IMessage {
       id: string
       role: import('@ecw/types/llm').MessageRole
-      content: string | IMultiContent[]
+      content: TMessageContent[]
       model?: string
       reasoning_content?: string
       finish_reason?: string
-      analysis?: {
-        // Time To First Token，首字响应时间
-        TTFT?: number
-        // 文字生成速度（token/s）
-        speed?: number
+      stat?: {
+        // 首字响应时间
+        timeToFirstTokenSec?: number
         // 思考时间
         reasoning_time?: number
         // 正文生成时间
         content_time?: number
+        // 文字生成速度（token/s）
+        tokensPerSecond?: number
       }
 
       usage?: import('@ecw/types/llm').Usage

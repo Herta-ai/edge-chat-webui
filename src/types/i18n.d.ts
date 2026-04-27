@@ -49,6 +49,7 @@ declare namespace I18N {
       confirm: string
       delete: string
       deleteSuccess: string
+      deselect: string
       confirmDelete: string
       edit: string
       warning: string
@@ -76,6 +77,7 @@ declare namespace I18N {
         yes: string
         no: string
       }
+      newFolder: string
     }
     request: {
       logout: string
@@ -207,6 +209,10 @@ declare namespace I18N {
         step2Desc: string
         step3Title: string
         step3Desc: string
+      }
+      chat: {
+        chatHistory: string
+        searchHistory: string
       }
       home: {
         branchDesc: string

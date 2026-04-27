@@ -29,8 +29,8 @@ function handleClickMenu(key: RouteKey) {
     <!-- define component start: BreadcrumbContent -->
     <DefineBreadcrumbContent v-slot="{ breadcrumb }">
       <div class="i-flex-y-center align-middle">
-        <component :is="breadcrumb.icon" v-if="themeStore.header.breadcrumb.showIcon" class="mr-4px text-icon" />
-        {{ breadcrumb.label }}
+        <component :is="breadcrumb.icon" v-if="themeStore.header.breadcrumb.showIcon" class="text-icon" />
+        <span class="ml-4px">{{ breadcrumb.label }}</span>
       </div>
     </DefineBreadcrumbContent>
     <!-- define component end: BreadcrumbContent -->

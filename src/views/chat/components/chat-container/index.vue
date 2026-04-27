@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div>
-    hello world!
+  <div class="text-base-text">
+    Todo...
   </div>
 </template>
 

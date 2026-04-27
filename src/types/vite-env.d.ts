@@ -17,16 +17,8 @@ declare namespace Env {
     readonly VITE_APP_DESC: string
     /** The router history mode */
     readonly VITE_ROUTER_HISTORY_MODE?: RouterHistoryMode
-    /** backend service base url */
-    readonly VITE_SERVICE_BASE_URL: string
     /** when the route mode is static, the defined super role */
     readonly VITE_STATIC_SUPER_ROLE: string
-    /**
-     * other backend service base url
-     *
-     * the value is a json
-     */
-    readonly VITE_OTHER_SERVICE_BASE_URL: string
     /**
      * Whether to enable the http proxy
      *

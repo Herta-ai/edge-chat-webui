@@ -22,6 +22,7 @@ const local: I18N.Schema = {
     confirm: '确认',
     delete: '删除',
     deleteSuccess: '删除成功',
+    deselect: '取消选择',
     confirmDelete: '确认删除吗？',
     edit: '编辑',
     warning: '警告',
@@ -49,6 +50,7 @@ const local: I18N.Schema = {
       yes: '是',
       no: '否',
     },
+    newFolder: '新建文件夹',
   },
   request: {
     logout: '请求失败后登出用户',
@@ -227,6 +229,8 @@ const local: I18N.Schema = {
     'iframe-page': '外链页面',
     'home': '首页',
     'settings': '设置',
+    'chat': '聊天',
+    'chat_base-chat': '基础聊天',
   },
   page: {
     wizard: {
@@ -240,6 +244,10 @@ const local: I18N.Schema = {
       step2Desc: '选择您喜欢的使用方式。',
       step3Title: '准备就绪',
       step3Desc: '一切设置完毕，尽情探索吧。',
+    },
+    chat: {
+      chatHistory: '聊天历史',
+      searchHistory: '搜索历史',
     },
     home: {
       branchDesc:

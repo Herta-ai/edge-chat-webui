@@ -4,7 +4,7 @@
 // Read more: https://github.com/soybeanjs/elegant-router
 // @unocss-include
 
-import type { GeneratedRoute } from '@elegant-router/types';
+import type { GeneratedRoute } from '@elegant-router/types'
 
 export const generatedRoutes: GeneratedRoute[] = [
   {
@@ -43,19 +43,22 @@ export const generatedRoutes: GeneratedRoute[] = [
   {
     name: 'chat',
     path: '/chat',
-    component: 'layout.base$view.chat',
+    component: 'layout.base',
     meta: {
       title: 'chat',
-      i18nKey: 'route.chat'
+      i18nKey: 'route.chat',
+      order: 2,
+      icon: 'i-streamline-color:chat-bubble-typing-oval-flat'
     },
     children: [
       {
-        name: 'chat_simple-chat',
-        path: '/chat/simple-chat',
-        component: 'view.chat_simple-chat',
+        name: 'chat_base-chat',
+        path: '/chat/base-chat',
+        component: 'view.chat_base-chat',
         meta: {
-          title: 'chat_simple-chat',
-          i18nKey: 'route.chat_simple-chat'
+          title: 'base-chat',
+          i18nKey: 'route.chat_base-chat',
+          icon: 'i-streamline-color:chat-bubble-typing-oval-flat'
         }
       }
     ]
